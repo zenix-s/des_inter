@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
 </head>
 
 <body>
@@ -60,6 +61,8 @@
                         <th>Edad</th>
                         <th>Ciudad</th>
                         <th>Profesion</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -76,13 +79,15 @@
                         echo "<td>" . $x->edad . "</td>";
                         echo "<td>" . $x->ciudad . "</td>";
                         echo "<td>" . $x->profesion . "</td>";
+                        echo "<td><a href='editar.php?cod_empresa=" . $x->cod_empresa . "'><i class='bi bi-pencil-square'></i></a></td>";
+                        echo "<td><a href='eliminar.php?cod_empresa=" . $x->cod_empresa . "'><i class='bi bi-trash'></i></a></td>";
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
         </section>
-
+        
 
 
     </main>

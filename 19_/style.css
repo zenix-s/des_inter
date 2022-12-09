@@ -136,6 +136,9 @@ main{
 .tabla > tbody > tr:hover > td{
     background-color: #e7e7e7;
 }
+.button_tab:hover{
+    color: #096fe3;
+}
 @media (max-width: 1200px){
     .formulario{
         width: 70vw;
