@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,11 +36,25 @@
                         </div>
                     </div>
                     <div class="container-in">
-                        <input type="submit" value="Enviar" name="enviar">
+                        <input type="submit" value="Editar " name="enviar">
                     </div>
                 </form>
             </div>
         </section>
+        
     </main>
+    <?php
+    $codigo = $_GET['codigo'];
+    include 'conexion.php';
+    $sql = $conexion -> query("SELECT * FROM empleados WHERE cod_empresa = $codigo");
+    $resultado = $sql->fetch(PDO::FETCH_OBJ);
+    echo "<script>
+        document.getElementById('nombre').value = '$resultado->nombre';
+        document.getElementById('apellidos').value = '$resultado->apellidos';
+        document.getElementById('edad').value = '$resultado->edad';
+        document.getElementById('ciudad').value = '$resultado->ciudad';
+        document.getElementById('profesion').value = '$resultado->profesion';
+    </script>"
+    ?>
 </body>
 </html>
