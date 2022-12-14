@@ -79,11 +79,12 @@
                         echo "<td>" . $x->edad . "</td>";
                         echo "<td>" . $x->ciudad . "</td>";
                         echo "<td>" . $x->profesion . "</td>";
-                        echo "<td><a href='editar.php?codigo=" . $x->cod_empresa . "'><i class='bi bi-pencil-square'></i></a></td>";
-                        echo "<td><a href='eliminar.php?codigo=" . $x->cod_empresa . "'><i class='bi bi-trash'></i></a></td>";
+                        echo "<td style='text-align:center; font-size: 25px'><a href='editar.php?codigo=" . $x->cod_empresa . "'><i class='bi bi-pencil-square'></i></a></td>";
+                        echo "<td style='text-align:center; font-size: 25px'><a href='eliminar.php?codigo=" . $x->cod_empresa . "'><i class='bi bi-trash'></i></a></td>";
                         echo "</tr>";
                     }
                     ?>
+
                 </tbody>
             </table>
         </section>
