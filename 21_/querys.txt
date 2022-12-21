@@ -1,0 +1,1 @@
+CREATE TABLE empleados( cod_empresa int(15) PRIMARY KEY AUTO_INCREMENT, nombre varchar(50), apellidos varchar(100), edad int, ciudad varchar(50), profesion varchar(50) );
