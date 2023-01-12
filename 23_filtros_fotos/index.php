@@ -12,15 +12,17 @@
 <body>
     <main>
         <section id="container_form">
-            <form action="valida_foto.php" method="post" enctype="multipart/form-data">
-                <h1>Nombre</h1>
-                <input type="text" name="txtnom" id="nombre">
+            <form action="filtros.php" method="post" enctype="multipart/form-data">
+                <div class="input-group">
+                    <label>Nombre</label>
+                    <input type="text" name="txtnom" id="nombre">
+                </div>
                 <label for="foto" id="upload">
                     Subir imagen
                     <input type="file" name="foto" id="foto" style="display:none;">
                 </label>
                 <label id="filename">No se ha seleccinado ninguna imagen</label>
-                <input type="submit" value="Subir">
+                <input type="submit" value="Subir" name="enviar">
             </form>
         </section>
         <section id="container_fotos">
@@ -29,7 +31,7 @@
                 $sql = mysqli_query($conexion, "SELECT * FROM foto");
                 while($res =mysqli_fetch_array($sql)){
                     echo "<article><h1>".$res['nombre']."</h1>";
-                    echo "<img src='".$res['foto']."' width='200' height='200'></article>";
+                    echo "<img src='".$res['foto']."' style=' width='200' height='200''></article>";
                 }
             ?>
         </section>
