@@ -10,20 +10,46 @@
 </head>
 
 <body>
+    <header>
+        
+    </header>
     <main>
-        <section id="container_form">
-            <form action="filtros.php" method="post" enctype="multipart/form-data">
-                <div class="input-group">
-                    <label>Nombre</label>
-                    <input type="text" name="txtnom" id="nombre">
-                </div>
-                <label for="foto" id="upload">
-                    Subir imagen
-                    <input type="file" name="foto" id="foto" style="display:none;">
-                </label>
-                <label id="filename">No se ha seleccinado ninguna imagen</label>
-                <input type="submit" value="Subir" name="enviar">
-            </form>
+        <section id="container_forms">
+            <!-- Añadir fotos -->
+            <div class="container_form">
+                <form action="filtros.php" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label>Nombre</label>
+                        <input type="text" name="txtnom" id="nombre">
+                    </div>
+                    <label for="foto" id="upload">
+                        Subir imagen
+                        <input type="file" name="foto" id="foto" style="display:none;">
+                    </label>
+                    <label id="filename">No se ha seleccinado ninguna imagen</label>
+                    <input type="submit" value="Subir" name="enviar">
+                </form>
+            </div>
+            <!-- Eliminar -->
+            <div class="container_form">
+                <form action="eliminar.php" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label>Nombre</label>
+                        <input type="text" name="deltxtnom" id="nombre">
+                    </div>
+                    <input type="submit" value="Eliminar Foto" name="enviar">
+                </form>
+            </div>
+            <!-- Buscar -->
+            <div class="container_form">
+                <form action="buscar.php" method="post" enctype="multipart/form-data">
+                    <div class="input-group">
+                        <label>Nombre</label>
+                        <input type="search" name="searchtxtnom" id="nombre">
+                    </div>
+                    <input type="submit" value="Buscar Foto" name="enviar">
+                </form>
+            </div>
         </section>
         <section id="container_fotos">
             <?php

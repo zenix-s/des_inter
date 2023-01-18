@@ -11,6 +11,7 @@ if(isset($_POST["enviar"])){
     $type = $_FILES["foto"]["type"];
     $nombre = $_REQUEST["txtnom"];
 
+
     if($error){
         $resultado = "No se ha podido cargar el archivo";
         echo $resultado;
@@ -24,10 +25,8 @@ if(isset($_POST["enviar"])){
         $ruta = "img/".$nombre . ".jpg";
         move_uploaded_file($tmp, $ruta);
         require "conexion.php";
-        $sql = $conexion -> prepare("INSERT INTO foto(nombre, foto) VALUES (?, ?);");
-        $resultado = $sql -> execute([$nombre, $ruta]);
+        $res = mysqli_query($conexion, "INSERT INTO foto(nombre, foto) VALUES ('$nombre', '$ruta')");
         header("location: index.php");
     }
-    // echo $sizepx . " " . $maxsize;
 }
 ?>
