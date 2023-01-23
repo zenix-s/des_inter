@@ -1,0 +1,38 @@
+:root{
+    --color_contain_1: #ffffff;
+    --main_color_1: #F9F5EB;
+    --main_color_2: #EAE3D2;
+    --main_color_3: #607EAA;
+    --main_color_4: #1C3879;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+}
+header{
+    background-color: var(--main_color_3);
+    height: 10vh;
+}
+header > .icon_container{
+    width: 20%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+header > .icon_container > a > img{
+    height: 5vh;
+    margin-left: 15px;
+}
+
+main{
+    background-color: var(--main_color_1);
+    min-height: 90vh;
+    width: 100vw;
+}
