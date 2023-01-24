@@ -17,7 +17,30 @@
         </div>
     </header>
     <main>
-        
+        <section class="form_container">
+            <form action="">
+                <div class="input_container">
+                    <label for="">ISBN</label>
+                    <input type="text">
+                </div>
+                <div class="input_container">
+                    <label for=""></label>
+                    <input type="text">
+                </div>
+                <div class="input_container">
+                    <label for=""></label>
+                    <input type="text">
+                </div>
+                <div class="input_container">
+                    <label for=""></label>
+                    <input type="text">
+                </div>
+                <div class="input_container">
+                    <label for=""></label>
+                    <input type="text">
+                </div>
+            </form>
+        </section>
     </main>
 </body>
 

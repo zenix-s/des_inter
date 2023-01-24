@@ -1,4 +1,6 @@
-
+html:focus-within{
+    scroll-behavior: smooth;
+}
 *{
     font-family: sans-serif;
 }
@@ -12,7 +14,7 @@
 .table_view_container > table{
     background-color: #ffffff;
     border-collapse: collapse;
-    width: 70%;
+    width: 90%;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     box-shadow: 2px 2px 20px 2px #cccccc;
@@ -42,12 +44,22 @@
 }
 .table_view_container > table > tbody > tr > td{
     height: 3em;
-    padding: 10px 30px;
+    padding: 10px 10px;
     text-align: center;
     transition: color 100ms, background-color 50ms;
 }
+.up_button{
+    position: fixed;
+    font-size: 2em;
+    right: 15px;
+    bottom: 10px;
+    color: var(--main_color_4);
+}
+.up_button:hover{
+    color: var(--main_color_3);
+}
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .table_view_container > table > thead{
         display: none;
     }
@@ -57,6 +69,7 @@
         display: block;
         width: 95% !important;
         background-color: #ffffff00 !important;
+        box-shadow: none;
     }
     .table_view_container > table > tbody,
     .table_view_container > table > tbody > tr,
@@ -70,12 +83,14 @@
         border-radius: 10px;
         border: none;
         overflow: hidden;
+        /* box-shadow: 2px 2px 20px 2px #cccccc; */
     }
     .table_view_container > table > tbody > tr > td{
         text-align: right !important;
-        height: 3em;
-        padding-left: 50%;
+        min-height: 3em;
+        padding-left: 35%;
         position: relative;
+        overflow: hidden;
     }
     .table_view_container > table > tbody > tr > td:not(:last-of-type){
         border-bottom: 1px solid #797979 !important;
@@ -84,7 +99,7 @@
         content: attr(data-label);
         position: absolute;
         left: 0;
-        width: 50%;
+        width: 35%;
         padding-left: 15px;
         font-size: 1rem;
         text-align: left;

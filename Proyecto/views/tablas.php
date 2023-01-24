@@ -1,16 +1,6 @@
 <?php
 include_once "../conexion.php";
-$resultado = mysqli_query($conexion, "SELECT * FROM hotel");
-
-// if(isset($_POST["button-search"])){
-//     $busqueda = $_POST['search-text'];
-//     $consulta = "SELECT * FROM hotel WHERE codigo LIKE '$busqueda' || nhabitacion LIKE '$busqueda' || tipo LIKE '$busqueda' || estado LIKE '$busqueda' || fechaentrada LIKE '$busqueda' || fechasalida LIKE '$busqueda' || nnoches LIKE '$busqueda' || precionoche LIKE '$busqueda'";
-//     if ($busqueda == ""){
-//         $consulta = "SELECT * FROM hotel";
-//     }else{
-//         $resultado = mysqli_query($conexion, $consulta);
-//     }
-// }
+$resultado = mysqli_query($conexion, "SELECT * FROM libros");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +13,11 @@ $resultado = mysqli_query($conexion, "SELECT * FROM hotel");
     <link rel="stylesheet" href="../styles/general_style.css">
     <link rel="stylesheet" href="../styles/tablas_style.css">
     <link rel="icon" href="../img/icon.svg">
+    <link rel="stylesheet" href="../icons/bootstrap-icons.css">
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="icon_container">
             <a href="../index.php"><img src="../img/icon.svg" alt=""></a>
         </div>
@@ -36,34 +27,29 @@ $resultado = mysqli_query($conexion, "SELECT * FROM hotel");
             <table>
                 <thead>
                     <tr>
-                        <th>Código</th>
-                        <th>Número de habitación</th>
-                        <th>Tipo</th>
-                        <th>Estado</th>
-                        <th>Fecha de entrada</th>
-                        <th>Fecha de salida</th>
-                        <th>Número de noches</th>
-                        <th>Precio por noche</th>
+                        <th>ISBN</th>
+                        <th>Autor</th>
+                        <th>Titulo</th>
+                        <th>Editorial</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     while($reg = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
                         echo "<tr>";
-                            echo "<td data-label='codigo'>" . $reg['codigo'] . "</td>";
-                            echo "<td data-label='Nº Habitación'>" . $reg['nhabitacion'] . "</td>";
-                            echo "<td data-label='Tipo'>" . $reg['tipo'] . "</td>";
-                            echo "<td data-label='Estado'>" . $reg['estado'] . "</td>";
-                            echo "<td data-label='Fecha Entrada'>" . $reg['fechaentrada'] . "</td>";
-                            echo "<td data-label='Fecha Salida'>" . $reg['fechasalida'] . "</td>";
-                            echo "<td data-label='Nº Noches'>" . $reg['nnoches'] . "</td>";
-                            echo "<td data-label='Codigo'>" . $reg['precionoche'] . "</td>";
+                            echo "<td data-label='ISBN'>" . $reg['ISBN'] . "</td>";
+                            echo "<td data-label='Autor'>" . $reg['AUTOR'] . "</td>";
+                            echo "<td data-label='Titulo'>" . $reg['TITULO'] . "</td>";
+                            echo "<td data-label='EDITORIAL'>" . $reg['EDITORIAL'] . "</td>";
+                            echo "<td data-label='FECHA'>" . $reg['FECHA'] . "</td>";
                         echo "</tr>";
                     }
                     ?>
                 </tbody>
             </table>
         </section>
+        <a href="#header" class="up_button"><i class="bi bi-arrow-up-circle-fill"></i></a>
     </main>
 </body>
 
