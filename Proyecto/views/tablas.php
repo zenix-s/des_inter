@@ -38,11 +38,11 @@ $resultado = mysqli_query($conexion, "SELECT * FROM libros");
                     <?php
                     while($reg = mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
                         echo "<tr>";
-                            echo "<td data-label='ISBN'>" . $reg['ISBN'] . "</td>";
-                            echo "<td data-label='Autor'>" . $reg['AUTOR'] . "</td>";
-                            echo "<td data-label='Titulo'>" . $reg['TITULO'] . "</td>";
-                            echo "<td data-label='EDITORIAL'>" . $reg['EDITORIAL'] . "</td>";
-                            echo "<td data-label='FECHA'>" . $reg['FECHA'] . "</td>";
+                            echo "<td data-label='ISBN'>" . $reg['isbn'] . "</td>";
+                            echo "<td data-label='Autor'>" . $reg['autor'] . "</td>";
+                            echo "<td data-label='Titulo'>" . $reg['titulo'] . "</td>";
+                            echo "<td data-label='EDITORIAL'>" . $reg['editorial'] . "</td>";
+                            echo "<td data-label='FECHA'>" . $reg['fecha'] . "</td>";
                         echo "</tr>";
                     }
                     ?>

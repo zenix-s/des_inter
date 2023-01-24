@@ -20,24 +20,27 @@
         <section class="form_container">
             <form action="">
                 <div class="input_container">
-                    <label for="">ISBN</label>
-                    <input type="text">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" name="isbn">
                 </div>
                 <div class="input_container">
-                    <label for=""></label>
-                    <input type="text">
+                    <label for="autor">Autor</label>
+                    <input type="text" name="autor">
                 </div>
                 <div class="input_container">
-                    <label for=""></label>
-                    <input type="text">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" name="titulo">
                 </div>
                 <div class="input_container">
-                    <label for=""></label>
-                    <input type="text">
+                    <label for="editorial">Editorial</label>
+                    <input type="text" name="editorial">
                 </div>
                 <div class="input_container">
-                    <label for=""></label>
-                    <input type="text">
+                    <label for="fecha">Fecha de publicación</label>
+                    <input type="date" name="fecha">
+                </div>
+                <div class="input_container">
+                    <input type="submit" value="Enviar">
                 </div>
             </form>
         </section>
