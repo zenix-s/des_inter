@@ -1,3 +1,7 @@
+html{
+    scroll-behavior: smooth;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -28,22 +32,6 @@ main{
     background-color: #F9F5EB;
     min-height: 90vh;
     width: 100vw;
-}
-footer{
-    background-color: rgb(212, 212, 212);
-    height: 5vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-footer > a{
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: rgb(90, 90, 90);
-}
-footer > a:hover{
-    color: #0a66c2;
 }
 .first_section_container{
     display: flex;
@@ -81,4 +69,79 @@ footer > a:hover{
 .first_section_container > .presentation_container > a:hover{
     background-color: #79b7e0;
     color: #F9F5EB;
+}
+
+.skills_section_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #F9F5EB;
+}
+.skills_section_container > .skills_title{
+    font-size: 2rem;
+    color: #505050;
+    text-align: center;
+    margin-bottom: 20px;
+}
+/* .skills_section_container > .skills_container > .skill_item:nth-child(1){
+    grid-area: java;
+}
+.skills_section_container > .skills_container > .skill_item:nth-child(2){
+    grid-area: html;
+}
+.skills_section_container > .skills_container > .skill_item:nth-child(3){
+    grid-area: css;
+}
+.skills_section_container > .skills_container > .skill_item:nth-child(4){
+    grid-area: js;
+}
+.skills_section_container > .skills_container > .skill_item:nth-child(5){
+    grid-area: php;
+}
+.skills_section_container > .skills_container > .skill_item:nth-child(6){
+    grid-area: sql;
+}
+.skills_section_container > .skills_container > .skill_item:nth-child(7){
+    grid-area: python;
+} */
+.skills_section_container > .skills_container{
+    width: 60%;
+    height: 60%;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+.skills_section_container > .skills_container > .skill_item{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #7c48af;
+    color: #fff;
+    font-size: 3em;
+    border-radius: 15px;
+}
+
+footer{
+    background-color: #F9F5EB;
+    height: 7vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+footer > a{
+    text-decoration: none;
+    font-size: 2rem;
+    color: #5a5a5a;
+    transition: color 0.2s ease;
+}
+footer > a:hover{
+    color: #3c3c3c;
 }
