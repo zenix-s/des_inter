@@ -1,62 +1,180 @@
-html:focus-within{
+aside > .option_list_container > a:nth-child(2){
+    border-left: 3px solid var(--color-3);
+    background-color: var(--color-4);
+    color: var(--color-1);
+}
+main{
+    overflow-y: scroll;
     scroll-behavior: smooth;
 }
-*{
-    font-family: sans-serif;
+.active{
+    display: flex !important;
+}
+.form_new_book_container{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.form_new_book_container > form{
+    background-color: var(--color-5);
+    padding: 2em 1em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    max-width: 600px;
+    min-width: 400px;
+    height: 70%;
+    position: relative;
+}
+.form_new_book_container > form > .close_button{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.5em;
+    border-radius: 50%;
+    border: 0.5px solid var(--color-6);
+    background-color: var(--color-5);
+    color: var(--color-6);
+    cursor: pointer;
+    transition: background-color 100ms, color 100ms;
+}
+.form_new_book_container > form > .close_button:hover{
+    background-color: var(--color-6);
+    color: var(--color-5);
+}
+.form_new_book_container > form > .input_container{
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 10px;
+    position: relative;
+}
+.form_new_book_container > form > .input_container > input[type="text"],
+.form_new_book_container > form > .input_container > input[type="date"]{
+    border: 0;
+    border-bottom: 1px solid var(--color-6);
+    padding: 5px 8px;
+    font-size: 1.5em;
+    transition: border 200ms ease-in-out;
+}
+.form_new_book_container > form > .input_container > input[type="submit"]{
+    border: 0;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background: transparent;
+    transition: border 200ms ease-in-out, color 200ms ease-in-out, background-color 200ms ease-in-out;
+    border-radius: 5px;
+    border: 1.5px solid var(--color-6);
+}
+.form_new_book_container > form > .input_container > input[type="submit"]:hover{
+    border: 1.5px solid var(--color-6);
+    color: var(--color-4);
+    background-color: var(--color-6);
+}
+.form_new_book_container > form > .input_container > label{
+    font-size: 1em;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    transform: translateY(7px);
+    cursor: text;
+    transition: transform 0.3s, color 0.3s, background-color 0.3s, font-size 0.3s;
+    user-select: none;
+    padding: 3px 3px;
+}
+.form_new_book_container > form > .input_container > input[type="text"]:focus + label,
+.form_new_book_container > form > .input_container > input[type="text"]:not(:placeholder-shown) + label,
+.form_new_book_container > form > .input_container > input[type="date"] + label{
+    transform: translateY(-20px);
+    font-size: 0.8em;
+    background-color: var(--color-5);
+    color: var(--color-6);
+}
+
+.form_actions_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    padding: 15px 25px;
+}
+.form_actions_container > button{
+    border: 0;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background: transparent;
+    transition: border 200ms ease-in-out;
+    border-radius: 5px;
+    border: 1.5px solid var(--color-6);
+}
+.form_actions_container > button:hover{
+    border: 1.5px solid var(--color-1);
 }
 .table_view_container{
-    padding: 3em 0;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .table_view_container > table{
-    background-color: #ffffff;
     border-collapse: collapse;
-    width: 90%;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-    box-shadow: 2px 2px 20px 2px #cccccc;
+    width: 95%;
+   overflow: hidden;
 }
 
 .table_view_container > table > thead > tr{
-    background-color: var(--main_color_4);
+    background-color: var(--color-3);
 }
 
 .table_view_container > table > thead > tr > th{
-    text-align: center;
     padding: 1em 0;
-    color: #ffffff;
+    color: var(--color-4);
 }
 
-.table_view_container > table > tbody > tr:nth-child(even){
-    background-color: #f0f0f0;
+.table_view_container > table > tbody > tr{
+    border-bottom: 0.5px solid var(--color-6);
 }
 
 .table_view_container > table > tbody > tr:last-of-type{
-    border-bottom: 3px solid var(--main_color_4);
+    border-bottom: none !important;
 }
 .table_view_container > table > tbody > tr:hover > td{
-    color: #a6ebce;
-    background-color: #535353;
+    color: var(--color-4);
+    background-color: var(--color-2);
     cursor: pointer;
 }
 .table_view_container > table > tbody > tr > td{
     height: 3em;
     padding: 10px 10px;
-    text-align: center;
     transition: color 100ms, background-color 50ms;
 }
 .up_button{
     position: fixed;
     font-size: 2em;
-    right: 15px;
+    right: 10px;
     bottom: 10px;
-    color: var(--main_color_4);
+    color: var(--color-2);
+    opacity: 0.5;
 }
 .up_button:hover{
-    color: var(--main_color_3);
+    color: var(--color-3);
 }
 
 @media (max-width: 900px) {
@@ -68,7 +186,7 @@ html:focus-within{
     .table_view_container > table{
         display: block;
         width: 95% !important;
-        background-color: #ffffff00 !important;
+        background-color: transparent !important;
         box-shadow: none;
     }
     .table_view_container > table > tbody,
@@ -79,11 +197,10 @@ html:focus-within{
     }
     .table_view_container > table > tbody > tr{
         margin-bottom: 15px !important;
-        background-color: #f0f0f0 !important;
+        background-color: var(--color-5) !important;
         border-radius: 10px;
         border: none;
         overflow: hidden;
-        /* box-shadow: 2px 2px 20px 2px #cccccc; */
     }
     .table_view_container > table > tbody > tr > td{
         text-align: right !important;
@@ -93,7 +210,7 @@ html:focus-within{
         overflow: hidden;
     }
     .table_view_container > table > tbody > tr > td:not(:last-of-type){
-        border-bottom: 1px solid #797979 !important;
+        border-bottom: 1px solid var(--color-6) !important;
     }
     .table_view_container > table > tbody > tr > td::before{
         content: attr(data-label);
@@ -101,7 +218,7 @@ html:focus-within{
         left: 0;
         width: 35%;
         padding-left: 15px;
-        font-size: 1rem;
+        font-size: 1em;
         text-align: left;
     }
 }

@@ -6,9 +6,10 @@ html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'open sans', sans-serif;
 }
 body{
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
 header{
     background-color: #607EAA;

@@ -1,0 +1,5 @@
+aside > .option_list_container > a:nth-child(3){
+    border-left: 3px solid var(--color-3);
+    background-color: var(--color-4);
+    color: var(--color-1);
+}
