@@ -34,7 +34,7 @@ $resultado = mysqli_query($conexion, "SELECT * FROM libros");
     <aside>
         <div class="option_list_container">
             <a href="../index.php"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
-            <a href="tablas.php"><i class="bi bi-table"></i> <span>Tabla</span></a>
+            <a href="tablas.php"><i class="bi bi-book"></i> <span>Libros</span></a>
             <a href="formulario.php"><i class="bi bi-plus-circle"></i><span>Añadir</span></a>
             <a href="#"><i class="bi bi-pen"></i><span>Modificar</span></a>
             <a href="#"><i class="bi bi-trash"></i><span>Eliminar</span></a>
@@ -48,27 +48,27 @@ $resultado = mysqli_query($conexion, "SELECT * FROM libros");
             <h1>Añadir Libro</h1>
             <div class="input_container">
 
-                <input type="text" name="isbn" placeholder=" ">
-                <label for="isbn">ISBN</label>
+                <input type="text" name="isbn" placeholder=" " id="isbn" required pattern="((?:[\dX]{13})|(?:[\d\-X]{17})|(?:[\dX]{10})|(?:[\d\-X]{13}))">
+                <label for="isbn">ISBN*</label>
             </div>
             <div class="input_container">
 
-                <input type="text" name="autor" placeholder=" " >
+                <input type="text" name="autor" placeholder=" " id="autor">
                 <label for="autor">Autor</label>
             </div>
             <div class="input_container">
 
-                <input type="text" name="titulo" placeholder=" ">
-                <label for="titulo">Titulo</label>
+                <input type="text" name="titulo" placeholder=" " id="titulo">
+                <label for="titulo">Titulo*</label>
             </div>
             <div class="input_container">
 
-                <input type="text" name="editorial" placeholder=" ">
+                <input type="text" name="editorial" placeholder=" " id="editorial">
                 <label for="editorial">Editorial</label>
             </div>
             <div class="input_container">
 
-                <input type="date" name="fecha" placeholder=" ">
+                <input type="date" name="fecha" placeholder=" " id="fecha">
                 <label for="fecha">Fecha de publicación</label>
             </div>
             <div class="input_container">

@@ -38,6 +38,8 @@ main{
 }
 .form_new_book_container > form > .close_button{
     position: absolute;
+    height: 35px;
+    width: 35px;
     top: 5px;
     right: 5px;
     font-size: 1.5em;
@@ -69,6 +71,16 @@ main{
     padding: 5px 8px;
     font-size: 1.5em;
     transition: border 200ms ease-in-out;
+    outline: none;
+}
+.form_new_book_container > form > .input_container > input[type="text"]:not(:valid):not(:placeholder-shown){
+    border-bottom: 1px solid red;
+}
+.form_new_book_container > form > .input_container > input[type="text"]:not(:valid):not(:placeholder-shown) + label{
+    color: red;
+}
+.form_new_book_container > form > .input_container > input[type="text"]:not(:valid):focus{
+    outline: red;
 }
 .form_new_book_container > form > .input_container > input[type="submit"]{
     border: 0;
@@ -208,6 +220,7 @@ main{
         padding-left: 35%;
         position: relative;
         overflow: hidden;
+        line-height: 1;
     }
     .table_view_container > table > tbody > tr > td:not(:last-of-type){
         border-bottom: 1px solid var(--color-6) !important;

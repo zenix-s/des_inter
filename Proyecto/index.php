@@ -30,7 +30,7 @@
     <aside>
         <div class="option_list_container">
             <a href="index.php"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
-            <a href="views/tablas.php"><i class="bi bi-table"></i> <span>Tabla</span></a>
+            <a href="views/tablas.php"><i class="bi bi-book"></i> <span>Libros</span></a>
             <a href="views/formulario.php"><i class="bi bi-plus-circle"></i><span>Añadir</span></a>
             <a href="#"><i class="bi bi-pen"></i><span>Modificar</span></a>
             <a href="#"><i class="bi bi-trash"></i><span>Eliminar</span></a>

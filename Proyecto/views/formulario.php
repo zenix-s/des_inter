@@ -30,7 +30,7 @@
     <aside>
         <div class="option_list_container">
             <a href="../index.php"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
-            <a href="tablas.php"><i class="bi bi-table"></i> <span>Tabla</span></a>
+            <a href="tablas.php"><i class="bi bi-book"></i> <span>Libros</span></a>
             <a href="formulario.php"><i class="bi bi-plus-circle"></i><span>Añadir</span></a>
             <a href="#"><i class="bi bi-pen"></i><span>Modificar</span></a>
             <a href="#"><i class="bi bi-trash"></i><span>Eliminar</span></a>
@@ -39,29 +39,7 @@
     <main>
         <section class="form_container">
             <form action="">
-                <div class="input_container">
-                    <label for="isbn">ISBN</label>
-                    <input type="text" name="isbn">
-                </div>
-                <div class="input_container">
-                    <label for="autor">Autor</label>
-                    <input type="text" name="autor">
-                </div>
-                <div class="input_container">
-                    <label for="titulo">Titulo</label>
-                    <input type="text" name="titulo">
-                </div>
-                <div class="input_container">
-                    <label for="editorial">Editorial</label>
-                    <input type="text" name="editorial">
-                </div>
-                <div class="input_container">
-                    <label for="fecha">Fecha de publicación</label>
-                    <input type="date" name="fecha">
-                </div>
-                <div class="input_container">
-                    <input type="submit" value="Enviar">
-                </div>
+                
             </form>
         </section>
     </main>
