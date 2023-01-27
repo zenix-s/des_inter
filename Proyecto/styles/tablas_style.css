@@ -3,6 +3,13 @@ aside > .option_list_container > a:nth-child(2){
     background-color: var(--color-4);
     color: var(--color-1);
 }
+@media (max-width: 768px){
+    aside > .option_list_container > a:nth-child(2){
+        border-left: 3px solid var(--color-3);
+        background-color: var(--color-4);
+        color: var(--color-3);
+    }
+}
 main{
     overflow-y: scroll;
     scroll-behavior: smooth;
