@@ -1,0 +1,8 @@
+DataBase: prueba
+table: registros
+campos: 
+    -id primary_key auto_increment
+    -nombre varchar(30)
+    -apellidos varchar(100)
+    -correo varchar(150)
+    -categoria varchar(50)
