@@ -1,11 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&family=Roboto:wght@100;300;400;700&display=swap');
+:root{
+    --color-1: #222831;
+    --color-2: #393E46;
+    --color-3: #767e8a;
+    --color-4: #FF2E63;
+    --color-5: #00ADB5;
+    --color-6: #EEEEEE;
+    --color-7: #FFFFFF;
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'roboto', sans-serif;
+    font-weight: 300;
 }
 body{
     overflow-x: hidden;
+    background-image: url(../img/back_login_library.jpg);
+    background-size: cover;
+    background-position: top;
 }
 main{
     width: 100vw;
@@ -13,24 +27,27 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    background: transparent;
 }
-main > h1{
-    position: absolute;
-    top: 10px;
-    left: 10px;
+.form_container > h1{
+    color: var(--color-2);
+    font-weight: 700;
+    font-size: 3em;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
 
 main > .form_container{
     width: 400px;
-    height: 400px;
-    background: #fff;
+    background: var(--color-7);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 3em 2em;
+    box-shadow: 0 0 10px var(--color-3);
 }
 main > .form_container > form{
     width: 100%;
@@ -42,12 +59,14 @@ main > .form_container > form{
 }
 main > .form_container > form >  h2{
     font-size: 2.5em;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 2.5px;
     margin-bottom: 20px;
-    border-bottom: 0.5px solid #ccc;
+    border-bottom: 0.5px solid var(--color-3);
     width: 90%;
     text-align: center;
     padding-bottom: 10px;
+    color: var(--color-2);
 }
 main > .form_container > form > .container_inputs{
     width: 90%;
@@ -61,40 +80,54 @@ main > .form_container > form > .container_inputs > .container_in{
     margin-top: 30px;
 }
 main > .form_container > form > .container_inputs > .container_in > label{
+    color: var(--color-3);
     font-size: 1em;
     margin-bottom: 5px;
+    font-weight: 100;
     position: absolute;
     top: 0;
     left: 16px;
-    transform: translateY(7px);
+    transform: translateY(10px);
     cursor: text;
-    transition: transform 0.3s, color 0.3s, background-color 0.3s, font-size 0.3s;
+    transition: transform 0.3s ease-out, color 0.3s, background-color 0.3s, font-size 0.3s;
     user-select: none;
     padding: 3px 3px;
 }
 
 main > .form_container > form > .container_inputs > .container_in > input{
     width: 100%;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 11px 16px;
+    height: 50px;
+    border: 1px solid var(--color-3);
+    border-radius: 3px;
+    padding: 0 16px;
     font-size: 1em;
     margin-bottom: 10px;
-    background-color: #fff !important;
+    background-color: var(--color-7) !important;
 }
 main > .form_container > form > .container_inputs > .container_in > input:focus + label,
 main > .form_container > form > .container_inputs > .container_in > input:not(:placeholder-shown) + label{
-    transform: translateY(-15px);
-    background-color: #fff;
+    transform: translateY(-17px);
+    background-color: var(--color-7);
     font-size: 0.8em;
 }
 
 main > .form_container > form > .container_inputs > .container_in > input[type="submit"]{
+    background-color: var(--color-4) !important;
+    color: var(--color-7);
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: letter-spacing 0.3s ease-out;
+    position: relative;
+    border: none !important;
 }
 main > .form_container > form > .container_inputs > .container_in > input[type="submit"]:hover{
-    background-color: #838383 !important;
-    color: #fff !important;
+    letter-spacing: 2px;
 }
+
+/* @media screen and (max-width: 500px){
+    main > .form_container{
+        width: 90%;
+    }
+    main > h1{
+        top: ;
+    }
+} */

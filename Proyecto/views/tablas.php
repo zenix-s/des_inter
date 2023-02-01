@@ -1,7 +1,12 @@
 <?php
+include '../includes/user_session.php';
+$userSession = new UserSession();
+if(!isset($_SESSION['user'])){
+    header('location: login.php');
+}
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
-$conexion = $conexion->conectar()->prepare("SELECT * FROM libros");
+$consulta = $conexion->conectar()->prepare("SELECT * FROM libros");
 $consulta->execute();
 ?>
 <!DOCTYPE html>
@@ -11,7 +16,7 @@ $consulta->execute();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto DI</title>
+    <title>El Archivo</title>
     <link rel="stylesheet" href="../styles/general_style.css">
     <link rel="stylesheet" href="../styles/tablas_style.css">
     <link rel="icon" href="../img/icon.svg">
@@ -25,9 +30,15 @@ $consulta->execute();
         </div>
         <div class="user_container">
             <div class="user_name_container">
-                <p>Usuario</p>
+                <p>
+                    <?php
+                        echo $userSession->getCurrentUser();
+                    ?>
+                </p>
             </div>
-            <div class="user_img_container">
+            <div class="user_img_container" onclick="
+                window.location.href = '../includes/logout.php';
+            ">
                 <!-- <img src="img/user.svg" alt=""> -->
                 <i class="bi bi-person"></i>
             </div>
@@ -35,11 +46,11 @@ $consulta->execute();
     </header>
     <aside>
         <div class="option_list_container">
-            <a href="../index.php"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
-            <a href="tablas.php"><i class="bi bi-book"></i> <span>Libros</span></a>
-            <a href="formulario.php"><i class="bi bi-plus-circle"></i><span>Añadir</span></a>
-            <a href="#"><i class="bi bi-pen"></i><span>Modificar</span></a>
-            <a href="#"><i class="bi bi-trash"></i><span>Eliminar</span></a>
+            <a href="../index.php" data-select="0"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
+            <a href="tablas.php" data-select="1"><i class="bi bi-book"></i> <span>Libros</span></a>
+            <a href="formulario.php" data-select="0"><i class="bi bi-plus-circle"></i><span>Añadir</span></a>
+            <a href="#" data-select="0"><i class="bi bi-pen"></i><span>Modificar</span></a>
+            <a href="#" data-select="0"><i class="bi bi-trash"></i><span>Eliminar</span></a>
         </div>
     </aside>
     <section class="form_new_book_container">
