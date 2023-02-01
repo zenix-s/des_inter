@@ -1,6 +1,9 @@
 <?php
-include_once "../conexion.php";
-$resultado = mysqli_query($conexion, "SELECT * FROM libros");
+include_once "../includes/conexion.php";
+$conexion = new Conexion();
+$conexion = $conexion->conectar();
+$consulta = $conexion->prepare("SELECT * FROM libros");
+$consulta->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
