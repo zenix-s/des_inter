@@ -7,7 +7,7 @@
 
         public function __construct(){
             $this -> host = "localhost";
-            $this -> bbdd = "biblioteca";
+            $this -> bbdd = "libreria";
             $this -> user = "root";
             $this -> pass = "";
         }

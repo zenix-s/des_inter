@@ -1,16 +1,33 @@
 <?php
 include_once 'conexion.php';
 
-// select * from usuarios where id = 1 divide entre prepare y execute
-$sentencia_select = $conexion->prepare('SELECT *FROM usuarios WHERE id_user = ?');
-$sentencia_select->execute([1]);
-$resultado = $sentencia_select->fetch();
+class User extends Conexion{
+    private $nombre;
+    private $username;
 
-// if exist print nombre
-if ($resultado !== false) {
-    echo $resultado[0];
-} else {
-    echo "No existe el registro con ese ID";
+    public function userExist($user, $pass){
+        $query = $this->conectar()->prepare('SELECT * FROM usuarios WHERE username = :user AND password = :pass');
+        $query->execute(['user' => $user, 'pass' => $pass]);
+
+        if($query->rowCount()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function setUser($user){
+        $query = $this->conectar()->prepare('SELECT * FROM usuarios WHERE username = :user');
+        $query->execute(['user' => $user]);
+
+        foreach ($query as $currentUser) {
+            $this->nombre = $currentUser['nombre'];
+            $this->username = $currentUser['username'];
+        }
+    }
+
+    public function getNombre(){
+        return $this->nombre;
+    }
 }
 
 ?>

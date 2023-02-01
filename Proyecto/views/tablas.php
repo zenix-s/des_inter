@@ -1,8 +1,7 @@
 <?php
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
-$conexion = $conexion->conectar();
-$consulta = $conexion->prepare("SELECT * FROM libros");
+$conexion = $conexion->conectar()->prepare("SELECT * FROM libros");
 $consulta->execute();
 ?>
 <!DOCTYPE html>
@@ -71,8 +70,8 @@ $consulta->execute();
             </div>
             <div class="input_container">
 
-                <input type="date" name="fecha" placeholder=" " id="fecha">
-                <label for="fecha">Fecha de publicación</label>
+                <input type="text" name="precio" placeholder=" " id="precio">
+                <label for="precio">Precio Venta</label>
             </div>
             <div class="input_container">
                 <input type="submit" value="Enviar">
@@ -94,18 +93,18 @@ $consulta->execute();
                         <th>Autor</th>
                         <th>Titulo</th>
                         <th>Editorial</th>
-                        <th>Fecha</th>
+                        <th>Precio</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    while ($reg = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+                    while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
-                        echo "<td data-label='ISBN'>" . $reg['isbn'] . "</td>";
-                        echo "<td data-label='Autor'>" . $reg['autor'] . "</td>";
-                        echo "<td data-label='Titulo'>" . $reg['titulo'] . "</td>";
-                        echo "<td data-label='EDITORIAL'>" . $reg['editorial'] . "</td>";
-                        echo "<td data-label='FECHA'>" . $reg['fecha'] . "</td>";
+                        echo "<td data-label='isbn'>" . $fila['isbn'] . "</td>";
+                        echo "<td data-label='autor'>" . $fila['autor'] . "</td>";
+                        echo "<td data-label='titulo'>" . $fila['titulo'] . "</td>";
+                        echo "<td data-label='editorial'>" . $fila['editorial'] . "</td>";
+                        echo "<td data-label='precio'>" . $fila['precio'] . "</td>";
                         echo "</tr>";
                     }
                     ?>
