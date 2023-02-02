@@ -1,3 +1,21 @@
+<?php
+
+include_once '../includes/user.php';
+
+if (isset($_POST['registrar'])) {
+    $user = $_POST['username'];
+    $pass = $_POST['pass'];
+    $name = $_POST['fullName'];
+
+    $userObj = new User();
+    if ($userObj->addUser($user, $pass, $name)) {
+        header('Location: login.php');
+    } else {
+        echo 'El usuario ya existe';
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +47,7 @@
                         <label for="pass"><i class="bi bi-shield-lock"></i>Contraseña</label>
                     </div>
                     <div class="container_in">
-                        <input type="submit" value="Iniciar Sesión" name="login">
+                        <input type="submit" value="Registrar" name="registrar">
                     </div>
                 </div>
                 <a href="login.php">Ya tienes una cuenta?</a>

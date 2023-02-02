@@ -24,13 +24,10 @@ body{
 }
 main{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-image: url(../img/bg.svg);
-    background-size: auto;
-    background-position: top;
 }
 .form_container > h1{
     color: var(--color-6);

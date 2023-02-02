@@ -12,6 +12,15 @@ class User extends Conexion{
             return false;
         }
     }
+    public function addUser($user, $pass, $name){
+        if($this->userExist($user, $pass)){
+            return false;
+        }else{
+            $query = $this->conectar()->prepare('INSERT INTO usuarios (username, password, nombre) VALUES (:user, :pass, :name)');
+            $query->execute(['user' => $user, 'pass' => $pass, 'name' => $name]);
+            return true;
+        }
+    }
 }
 
 ?>

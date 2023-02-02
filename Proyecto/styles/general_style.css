@@ -23,8 +23,8 @@ body{
     grid-template-areas:
     'header header'
     'aside main';
-    grid-template-columns: 1fr 9fr;
-    grid-template-rows: 1fr 12fr;
+    grid-template-columns: 180px 9fr;
+    grid-template-rows: 60px 12fr;
     height: 100vh;
     width: 100vw;
     
@@ -44,6 +44,7 @@ aside > .option_list_container{
     height: 0%;
 }
 aside > .option_list_container > a{
+    height: 43.2px;
     display: flex;
     align-items: center;
     padding: 10px 20px;
@@ -54,6 +55,7 @@ aside > .option_list_container > a{
     gap: 10px;
 }
 aside > .option_list_container > a[data-select="1"]{
+    /* border-radius: 21px 0 0 21px; */
     border-left: 3px solid var(--color-6) !important;
     background-color: var(--color-6);
     color: var(--color-1);
@@ -65,35 +67,38 @@ aside > .option_list_container > a:hover{
 body > header{
     grid-area: header;
     background-color: var(--color-1);
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 180px 6fr 3fr;
 }
 header > .section_title_container{
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    text-align: center;
 }
 header > .section_title_container > h1{
     color: var(--color-4);
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 400;
     letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
 }
 header > .user_container{
     display: flex;
     /* flex-direction: row-reverse; */
     align-items: center;
-    justify-content: center;
-    padding: 0 20px;
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
 }
 header > .user_container > .user_name_container{
     color: var(--color-4);
     font-size: 1.2em;
     font-weight: 600;
-    margin-right: 10px;
 }
 header > .user_container > .user_name_container > span{
     font-weight: 400;
+    margin-right: 10px;
 }
 header > .user_container > .user_img_container{
     width: 40px;
@@ -151,6 +156,25 @@ body > main{
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    body > header > .section_title_container{
+        display: none;
+    }
+    .form_actions_container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px !important;
+    }
+    .form_actions_container > button{
+        width: 50px;
+        height: 50px;
+        padding: 0 !important;
+        font-size: 2em !important;
+        border-radius: 50% !important;
+    }
+    .form_actions_container > button > span{
+        display: none;
     }
     body > main{
         overflow-y: scroll;

@@ -1,12 +1,17 @@
 <?php
 include '../includes/user_session.php';
 $userSession = new UserSession();
-if(!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     header('location: login.php');
+}
+if(!isset($_GET['page'])){
+    header('location: tablas.php?page=1');
+}else{
+    $page = $_GET['page'];
 }
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
-$consulta = $conexion->conectar()->prepare("SELECT * FROM libros");
+$consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT 0,10");
 $consulta->execute();
 ?>
 <!DOCTYPE html>
@@ -26,15 +31,31 @@ $consulta->execute();
 <body>
     <header id="header">
         <div class="section_title_container">
-            <h1>Libros</h1>
+            <h1>El archivo</h1>
+        </div>
+        <div class="form_actions_container" id="up_button_anchor">
+
+            <button id="new_book">
+                <i class="bi bi-plus"></i>
+                <span>Añadir libro</span>
+            </button>
+            <div class="pages_container">
+                <button>
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <span>1</span>
+                <button>
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
         </div>
         <div class="user_container">
             <div class="user_name_container">
-                <p>
+                <span>
                     <?php
-                        echo $userSession->getCurrentUser();
+                    echo $userSession->getCurrentUser();
                     ?>
-                </p>
+                </span>
             </div>
             <div class="user_img_container" onclick="
                 window.location.href = '../includes/logout.php';
@@ -48,9 +69,7 @@ $consulta->execute();
         <div class="option_list_container">
             <a href="../index.php" data-select="0"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
             <a href="tablas.php" data-select="1"><i class="bi bi-book"></i> <span>Libros</span></a>
-            <a href="formulario.php" data-select="0"><i class="bi bi-plus-circle"></i><span>Añadir</span></a>
-            <a href="#" data-select="0"><i class="bi bi-pen"></i><span>Modificar</span></a>
-            <a href="#" data-select="0"><i class="bi bi-trash"></i><span>Eliminar</span></a>
+            <a href="portadas.php" data-select="0"><i class="bi bi-journal-bookmark"></i><span>Portadas</span></a>
         </div>
     </aside>
     <section class="form_new_book_container">
@@ -89,13 +108,7 @@ $consulta->execute();
         </form>
     </section>
     <main>
-        <section class="form_actions_container" id="up_button_anchor">
-            <button id="new_book">
-                <i class="bi bi-plus"></i>
-                <span>Añadir libro</span>
-            </button>
-        </section>
-        <section class="table_view_container">
+        <section class="table_view_container" id="table_container">
             <table>
                 <thead>
                     <tr>
@@ -113,7 +126,7 @@ $consulta->execute();
                         echo "<td data-label='isbn'>" . $fila['isbn'] . "</td>";
                         echo "<td data-label='titulo'>" . $fila['titulo'] . "</td>";
                         echo "<td data-label='autor'>" . $fila['autor'] . "</td>";
-                        echo "<td data-label='precio'>" . ($fila['precio']/100) . '€' . "</td>";
+                        echo "<td data-label='precio'>" . ($fila['precio'] / 100) . '€' . "</td>";
                         // echo "<td data-label='editorial'>" . $fila['editorial'] . "</td>";
                         echo "</tr>";
                     }
@@ -121,7 +134,7 @@ $consulta->execute();
                 </tbody>
             </table>
         </section>
-        <a href="#up_button_anchor" class="up_button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+        <a href="#table_container" class="up_button"><i class="bi bi-arrow-up-circle-fill"></i></a>
     </main>
     <script>
         const newBookButton = document.getElementById("new_book");
