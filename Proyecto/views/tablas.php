@@ -54,38 +54,37 @@ $consulta->execute();
         </div>
     </aside>
     <section class="form_new_book_container">
-        <form action="">
+        <form action="../execution/addBook.php" method="POST">
             <button class="close_button" id="close_form">
                 <i class="bi bi-x"></i>
             </button>
-            <h1>Añadir Libro</h1>
-            <div class="input_container">
-
+            <h1 style="grid-area: title;">Añadir Libro</h1>
+            <div class="input_container" style="grid-area: isbn;">
                 <input type="text" name="isbn" placeholder=" " id="isbn" required pattern="((?:[\dX]{13})|(?:[\d\-X]{17})|(?:[\dX]{10})|(?:[\d\-X]{13}))">
                 <label for="isbn">ISBN*</label>
             </div>
-            <div class="input_container">
+            <div class="input_container" style="grid-area: autor;">
 
                 <input type="text" name="autor" placeholder=" " id="autor">
                 <label for="autor">Autor</label>
             </div>
-            <div class="input_container">
+            <div class="input_container" style="grid-area: titulo;">
 
                 <input type="text" name="titulo" placeholder=" " id="titulo">
                 <label for="titulo">Titulo*</label>
             </div>
-            <div class="input_container">
+            <div class="input_container" style="grid-area: editorial;">
 
                 <input type="text" name="editorial" placeholder=" " id="editorial">
                 <label for="editorial">Editorial</label>
             </div>
-            <div class="input_container">
+            <div class="input_container" style="grid-area: precio;">
 
                 <input type="text" name="precio" placeholder=" " id="precio">
                 <label for="precio">Precio Venta</label>
             </div>
-            <div class="input_container">
-                <input type="submit" value="Enviar">
+            <div class="input_container" style="grid-area: submit;">
+                <input type="submit" value="Enviar" name="addBook">
             </div>
         </form>
     </section>
@@ -101,10 +100,10 @@ $consulta->execute();
                 <thead>
                     <tr>
                         <th>ISBN</th>
-                        <th>Autor</th>
                         <th>Titulo</th>
-                        <th>Editorial</th>
+                        <th>Autor</th>
                         <th>Precio</th>
+                        <!-- <th>Editorial</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -112,10 +111,10 @@ $consulta->execute();
                     while ($fila = $consulta->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
                         echo "<td data-label='isbn'>" . $fila['isbn'] . "</td>";
-                        echo "<td data-label='autor'>" . $fila['autor'] . "</td>";
                         echo "<td data-label='titulo'>" . $fila['titulo'] . "</td>";
-                        echo "<td data-label='editorial'>" . $fila['editorial'] . "</td>";
-                        echo "<td data-label='precio'>" . $fila['precio'] . "</td>";
+                        echo "<td data-label='autor'>" . $fila['autor'] . "</td>";
+                        echo "<td data-label='precio'>" . ($fila['precio']/100) . '€' . "</td>";
+                        // echo "<td data-label='editorial'>" . $fila['editorial'] . "</td>";
                         echo "</tr>";
                     }
                     ?>

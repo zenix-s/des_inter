@@ -29,7 +29,7 @@ main{
     justify-content: center;
     align-items: flex-start;
     background-image: url(../img/bg.svg);
-    background-size: cover;
+    background-size: auto;
     background-position: top;
 }
 .form_container > h1{
@@ -40,7 +40,7 @@ main{
     margin-bottom: 20px;
 }
 
-main > .form_container{
+.form_container{
     width: 500px;
     margin-top: 3em;
     border-radius: 10px;
@@ -49,7 +49,23 @@ main > .form_container{
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 3em 2em;
+    padding: 3em 0em;
+}
+.form_container > form > a{
+    color: var(--color-6);
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    margin: 20px;
+    transition: text-shadow 0.3s;
+    text-shadow: 0 0 3px var(--color-2);
+}
+.form_container > form > a:hover{
+    text-shadow: 3px 3px 7px var(--color-1);
 }
 main > .form_container > form{
     width: 100%;
@@ -59,6 +75,7 @@ main > .form_container > form{
     justify-content: center;
     align-items: center;
 }
+
 main > .form_container > form >  h2{
     font-size: 2.5em;
     font-weight: 400;
@@ -102,13 +119,16 @@ main > .form_container > form > .container_inputs > .container_in > input{
     height: 50px;
     border-radius: 25px;
     border: none;
-    background-color: #9bbaff;
+    background-color: #9bbbff50;
     padding: 0 16px;
     font-size: 1em;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     backdrop-filter: blur(10px);
     outline: transparent;
     color: var(--color-1);
+}
+.container_in > input[type="text"]:not(:valid):not(:placeholder-shown) + label{
+    color: red !important;
 }
 
 .container_in > label > i{
