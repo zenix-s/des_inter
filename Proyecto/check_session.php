@@ -16,7 +16,6 @@ function check_session($location, $userText="", $passText="", $loc2="login.php")
         $passForm = $passText;
 
         $user = new User();
-        echo "<script>alert('".$userForm."')</script>";
         if($user->userExist($userForm, $passForm)){
             $userSession->setCurrentUser($userForm);
             header('location: '.$location);
@@ -24,7 +23,6 @@ function check_session($location, $userText="", $passText="", $loc2="login.php")
             echo "<script>alert('Usuario o contraseña incorrectos')</script>";
         }
     }else{
-        echo "<script>alert('No hay sesion')</script>";
         header('location: '.$loc2);
     }
 }

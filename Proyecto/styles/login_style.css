@@ -17,20 +17,23 @@
 }
 body{
     overflow-x: hidden;
-    background-image: url(../img/back_login_library.jpg);
-    background-size: cover;
-    background-position: top;
+    background: #94b7e0;
+    background: -webkit-linear-gradient(0deg, #94b7e0 0%, #679dd9 50%, #074aba 100%);
+    background: linear-gradient(0deg, #94b7e0 0%, #679dd9 50%, #074aba 100%);
+    
 }
 main{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background: transparent;
+    align-items: flex-start;
+    background-image: url(../img/bg.svg);
+    background-size: cover;
+    background-position: top;
 }
 .form_container > h1{
-    color: var(--color-2);
+    color: var(--color-6);
     font-weight: 700;
     font-size: 3em;
     letter-spacing: 2px;
@@ -38,8 +41,8 @@ main{
 }
 
 main > .form_container{
-    width: 400px;
-    background: var(--color-7);
+    width: 500px;
+    margin-top: 3em;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -47,7 +50,6 @@ main > .form_container{
     align-items: center;
     position: relative;
     padding: 3em 2em;
-    box-shadow: 0 0 10px var(--color-3);
 }
 main > .form_container > form{
     width: 100%;
@@ -62,11 +64,11 @@ main > .form_container > form >  h2{
     font-weight: 400;
     letter-spacing: 2.5px;
     margin-bottom: 20px;
-    border-bottom: 0.5px solid var(--color-3);
+    border-bottom: 0.5px solid var(--color-6);
     width: 90%;
     text-align: center;
     padding-bottom: 10px;
-    color: var(--color-2);
+    color: var(--color-6);
 }
 main > .form_container > form > .container_inputs{
     width: 90%;
@@ -77,13 +79,14 @@ main > .form_container > form > .container_inputs > .container_in{
     width: 100%;
     font-size: 1.2em;
     position: relative;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 main > .form_container > form > .container_inputs > .container_in > label{
-    color: var(--color-3);
+    color: var(--color-1);
     font-size: 1em;
     margin-bottom: 5px;
-    font-weight: 100;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     position: absolute;
     top: 0;
     left: 16px;
@@ -97,37 +100,36 @@ main > .form_container > form > .container_inputs > .container_in > label{
 main > .form_container > form > .container_inputs > .container_in > input{
     width: 100%;
     height: 50px;
-    border: 1px solid var(--color-3);
-    border-radius: 3px;
+    border-radius: 25px;
+    border: none;
+    background-color: #9bbaff;
     padding: 0 16px;
     font-size: 1em;
     margin-bottom: 10px;
-    background-color: var(--color-7) !important;
+    backdrop-filter: blur(10px);
+    outline: transparent;
+    color: var(--color-1);
 }
+
+.container_in > label > i{
+    margin-right: 5px;
+}
+
 main > .form_container > form > .container_inputs > .container_in > input:focus + label,
 main > .form_container > form > .container_inputs > .container_in > input:not(:placeholder-shown) + label{
-    transform: translateY(-17px);
-    background-color: var(--color-7);
-    font-size: 0.8em;
+    transform: translateY(-25px);
+    color: var(--color-6);
 }
 
 main > .form_container > form > .container_inputs > .container_in > input[type="submit"]{
-    background-color: var(--color-4) !important;
-    color: var(--color-7);
+    background-color: var(--color-6) !important;
+    color: var(--color-1);
     cursor: pointer;
-    transition: letter-spacing 0.3s ease-out;
+    transition: box-shadow 0.15s ease-out;
     position: relative;
     border: none !important;
 }
 main > .form_container > form > .container_inputs > .container_in > input[type="submit"]:hover{
-    letter-spacing: 2px;
+    box-shadow: 4px 4px 5px var(--color-3);
 }
 
-/* @media screen and (max-width: 500px){
-    main > .form_container{
-        width: 90%;
-    }
-    main > h1{
-        top: ;
-    }
-} */

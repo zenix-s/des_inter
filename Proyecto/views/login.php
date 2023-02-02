@@ -29,11 +29,11 @@ if (isset($_POST['login'])) {
                 <h2>Iniciar Sesión</h2>
                 <div class="container_inputs">
                     <div class="container_in">
-                        <input type="text" name="username" id="username" placeholder=" " value="" autocomplete="off">
+                        <input type="text" name="username" id="username" placeholder=" " value="" autocomplete="off" required>
                         <label for="username"><i class="bi bi-person-fill"></i>Usuario</label>
                     </div>
                     <div class="container_in">
-                        <input type="password" name="pass" id="pass" placeholder=" " value="" autocomplete="off">
+                        <input type="password" name="pass" id="pass" placeholder=" " value="" autocomplete="off" required>
                         <label for="pass"><i class="bi bi-shield-lock"></i>Contraseña</label>
                     </div>
                     <div class="container_in">
