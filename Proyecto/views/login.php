@@ -4,7 +4,11 @@ include '../includes/user.php';
 include '../includes/user_session.php';
 
 if (isset($_POST['login'])) {
-    check_session('../index.php', $_POST['username'], $_POST['pass']);
+    try{
+        check_session('../index.php', $_POST['username'], $_POST['pass']);
+    }catch(Exception $e){
+        echo "Algo salió mal";
+    }
 }
 ?>
 

@@ -9,9 +9,14 @@ if(!isset($_GET['page'])){
 }else{
     $page = $_GET['page'];
 }
-$limitInit = ($page-1)*10;
+
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
+$maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros");
+$maxRows->execute();
+$maxRows = $maxRows->fetch(PDO::FETCH_NUM);
+$maxRows = $maxRows[0];
+$limitInit = ($page-1)*10;
 $consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,10");
 $consulta->execute();
 ?>
@@ -41,13 +46,21 @@ $consulta->execute();
                 <span>Añadir libro</span>
             </button>
             <div class="pages_container">
-                <a href="">
-                    <i class="bi bi-chevron-left"></i>
-                </a>
-                <span>1</span>
-                <button name="nextPage">
-                    <i class="bi bi-chevron-right"></i>
-                </button>
+                <?php
+                    if($page == 1){
+                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-left'></i></a>";
+                        echo "<span>$page</span>";
+                        echo "<a href='tablas.php?page=".($page+1)."'><i class='bi bi-chevron-right'></i></a>";
+                    }elseif($page < ceil($maxRows/10)){
+                        echo "<a href='tablas.php?page=".($page-1)."'><i class='bi bi-chevron-left'></i></a>";
+                        echo "<span>$page</span>";
+                        echo "<a href='tablas.php?page=".($page+1)."'><i class='bi bi-chevron-right'></i></a>";
+                    }else{
+                        echo "<a href='tablas.php?page=".($page-1)."'><i class='bi bi-chevron-left'></i></a>";
+                        echo "<span>$page</span>";
+                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-right'></i></a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="user_container">
