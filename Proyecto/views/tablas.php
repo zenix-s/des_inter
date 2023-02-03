@@ -9,9 +9,10 @@ if(!isset($_GET['page'])){
 }else{
     $page = $_GET['page'];
 }
+$limitInit = ($page-1)*10;
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
-$consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT 0,10");
+$consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,10");
 $consulta->execute();
 ?>
 <!DOCTYPE html>
@@ -40,11 +41,11 @@ $consulta->execute();
                 <span>Añadir libro</span>
             </button>
             <div class="pages_container">
-                <button>
+                <a href="">
                     <i class="bi bi-chevron-left"></i>
-                </button>
+                </a>
                 <span>1</span>
-                <button>
+                <button name="nextPage">
                     <i class="bi bi-chevron-right"></i>
                 </button>
             </div>
