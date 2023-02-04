@@ -140,52 +140,7 @@ main{
     color: var(--color-6);
 }
 
-.form_actions_container{
-    display: flex;
-    align-items: center;
-    height: 60px;
-    width: 100%;
-    padding: 15px 25px;
-}
-.form_actions_container > button{
-    border: 0;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    background: var(--color-6);
-    transition: box-shadow 200ms ease-in-out;
-    border-radius: 5px;
-    border: none;
-}
-.form_actions_container > button:hover{
-    box-shadow: 2.5px 2.5px 0px var(--color-3);
-}
 
-.form_actions_container > .pages_container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 0 25px;
-}
-.form_actions_container > .pages_container > a{
-    border: 0;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    background: transparent;
-    transition: box-shadow 200ms ease-in-out;
-    border-radius: 5px;
-    border: none;
-    color: var(--color-6);
-    font-size: 1.2em;
-    font-weight: 400;
-}
-.form_actions_container > .pages_container > span{
-    color: var(--color-6);
-    font-size: 1.2em;
-    font-weight: 400;
-}
 
 .table_view_container{
     padding-top: 1em;

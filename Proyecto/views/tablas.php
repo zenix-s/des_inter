@@ -9,7 +9,6 @@ if(!isset($_GET['page'])){
 }else{
     $page = $_GET['page'];
 }
-
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
 $maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros");
@@ -30,6 +29,7 @@ $consulta->execute();
     <title>El Archivo</title>
     <link rel="stylesheet" href="../styles/general_style.css">
     <link rel="stylesheet" href="../styles/tablas_style.css">
+    <link rel="stylesheet" href="../styles/header_actions_1_style.css">
     <link rel="icon" href="../img/icon.svg">
     <link rel="stylesheet" href="../icons/bootstrap-icons.css">
 </head>
@@ -47,7 +47,11 @@ $consulta->execute();
             </button>
             <div class="pages_container">
                 <?php
-                    if($page == 1){
+                    if($page == 1 && $page == ceil($maxRows/10)){
+                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-left'></i></a>";
+                        echo "<span>$page</span>";
+                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-right'></i></a>";
+                    }elseif($page == 1){
                         echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-left'></i></a>";
                         echo "<span>$page</span>";
                         echo "<a href='tablas.php?page=".($page+1)."'><i class='bi bi-chevron-right'></i></a>";

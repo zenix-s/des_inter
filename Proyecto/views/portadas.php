@@ -2,10 +2,23 @@
 
 include_once "../includes/user_session.php";
 $userSession = new UserSession();
-if(!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     header('location: login.php');
 }
-
+if(!isset($_GET['page'])){
+    header('location: portadas.php?page=1');
+}else{
+    $page = $_GET['page'];
+}
+include_once "../includes/conexion.php";
+$conexion = new Conexion();
+$maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros where portada != ''");
+$maxRows->execute();
+$maxRows = $maxRows->fetch(PDO::FETCH_NUM);
+$maxRows = $maxRows[0];
+$limitInit = ($page-1)*9;
+$query = $conexion->conectar()->prepare("SELECT * FROM libros where portada != '' LIMIT $limitInit,9");
+$query->execute();
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +33,7 @@ if(!isset($_SESSION['user'])){
     <link rel="stylesheet" href="../styles/general_style.css">
     <link rel="stylesheet" href="../styles/portadas_style.css">
     <link rel="stylesheet" href="../icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../styles/header_actions_1_style.css">
 </head>
 
 <body>
@@ -29,12 +43,37 @@ if(!isset($_SESSION['user'])){
         </div>
         <div class="form_actions_container" id="up_button_anchor">
 
+            <button id="new_book">
+                <i class="bi bi-plus"></i>
+                <span>Añadir libro</span>
+            </button>
+            <div class="pages_container">
+                <?php
+                if($page == 1 & (ceil($maxRows/9)) == 1){
+                    echo "<a href='portadas.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='portadas.php?page=" . ($page) . "'><i class='bi bi-chevron-right'></i></a>";
+                }elseif ($page == 1) {
+                    echo "<a href='portadas.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='portadas.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
+                } elseif ($page < ceil($maxRows / 9)) {
+                    echo "<a href='portadas.php?page=" . ($page - 1) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='portadas.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
+                } else {
+                    echo "<a href='portadas.php?page=" . ($page - 1) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='portadas.php?page=" . ($page) . "'><i class='bi bi-chevron-right'></i></a>";
+                }
+                ?>
+            </div>
         </div>
         <div class="user_container">
             <div class="user_name_container">
                 <span>
                     <?php
-                        echo $userSession->getCurrentUser();
+                    echo $userSession->getCurrentUser();
                     ?>
                 </span>
             </div>
@@ -55,19 +94,18 @@ if(!isset($_SESSION['user'])){
     </aside>
     <main>
         <?php
-            include_once "../includes/conexion.php";
-            $conexion = new Conexion();
-            $query = $conexion->conectar()->query("SELECT * FROM libros where portada != '' LIMIT 3,3");
-            $portadas = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach($portadas as $portada){
-                echo "<div class='portada_container'>";
-                    echo "<img src='../img/portadas/".$portada['portada']. "' alt=''>";
-                    echo "<div class='portada_info_container'>";
-                        echo "<span>".$portada['titulo']."</span>";
-                        echo "<span>".$portada['autor']."</span>";
-                    echo "</div>";
+        $portadas = $query->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($portadas as $portada) {
+            echo "<div class='portada_container'>";
+                echo "<div class='portada_img_container'>";
+                    echo "<img src='../img/portadas/" . $portada['portada'] . "' alt=''>";
                 echo "</div>";
-            }
+                echo "<div class='portada_info_container'>";
+                    echo "<span>" . $portada['titulo'] . "</span>";
+                    echo "<span>" . $portada['autor'] . "</span>";
+                echo "</div>";
+            echo "</div>";
+        }
         ?>
     </main>
 </body>
