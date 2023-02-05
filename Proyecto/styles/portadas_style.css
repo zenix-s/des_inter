@@ -1,11 +1,11 @@
 main{
     display: grid;
-    overflow-x: hidden;
-    overflow-y: scroll;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 32%);
     grid-gap: 1%;
     padding-top: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .portada_container{
@@ -26,14 +26,14 @@ main{
 }
 
 .portada_container > .portada_info_container{
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    color: var(--color-1);
     padding: 10px;
-    width: 50%;
-    height: 100%;
+    color: var(--color-1);
 }
 
 @media (max-width: 768px){

@@ -21,6 +21,19 @@ class User extends Conexion{
             return true;
         }
     }
+    public function getFullName($user){
+        $query = $this->conectar()->prepare('SELECT nombre FROM vendedores WHERE username = :user');
+        $query->execute(['user' => $user]);
+        if($query->rowCount()){
+            $result = $query->fetchAll();
+            foreach ($result as $row) {
+                $name = $row['nombre'];
+            }
+            return $name;
+        }else{
+            return $user;
+        }
+    }
 }
 
 ?>

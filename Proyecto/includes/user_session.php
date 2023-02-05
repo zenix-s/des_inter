@@ -5,8 +5,11 @@ class UserSession{
         session_start();
     }
 
-    public function setCurrentUser($user){
-        $_SESSION['user'] = $user;
+    public function setCurrentUser($username){
+        include_once 'user.php';
+        $user = new User();
+        $username = $user->getFullName($username);
+        $_SESSION['user'] = $username;
     }
 
     public function getCurrentUser(){
