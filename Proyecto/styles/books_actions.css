@@ -5,7 +5,7 @@
     height: 60px;
     width: 100%;
     padding: 15px 25px;
-    background: var(--color-3);
+    background: var(--background-color-3);
     
 }
 .form_actions_container > button{
@@ -13,13 +13,13 @@
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    background: var(--color-6);
+    background: var(--background-color-4);
     transition: box-shadow 200ms ease-in-out;
     border-radius: 5px;
     border: none;
 }
 .form_actions_container > button:hover{
-    box-shadow: 2.5px 2.5px 0px var(--color-3);
+    box-shadow: 2.5px 2.5px 0px var(--background-color-2);
 }
 
 .form_actions_container > .pages_container{
@@ -37,12 +37,12 @@
     transition: box-shadow 200ms ease-in-out;
     border-radius: 5px;
     border: none;
-    color: var(--color-6);
+    color: var(--font-color-3);
     font-size: 1.2em;
     font-weight: 400;
 }
 .form_actions_container > .pages_container > span{
-    color: var(--color-6);
+    color: var(--font-color-3);
     font-size: 1.2em;
     font-weight: 400;
 }
@@ -61,13 +61,13 @@
     cursor: pointer;
     background: transparent;
     border: none;
-    color: var(--color-6);
+    color: var(--font-color-3);
     font-size: 1.2em;
     font-weight: 400;
     transition: text-shadow 200ms ease-in-out;
 }
 .views_container > a:hover{
-    text-shadow: 2.5px 2.5px 0px var(--color-2);
+    text-shadow: 2.5px 2.5px 0px var(--font-color-1);
 }
 
 @media screen and (max-width: 768px){

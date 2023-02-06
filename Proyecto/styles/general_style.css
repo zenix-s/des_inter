@@ -1,12 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300&family=Roboto:wght@100;300;400;700&display=swap');
 :root{
-    --color-1: #222831;
-    --color-2: #393E46;
-    --color-3: #767e8a;
-    --color-4: #FF2E63;
-    --color-5: #00ADB5;
-    --color-6: #EEEEEE;
-    --color-7: #FFFFFF;
+    --font-color-1: #000000;
+    --font-color-2: #393E46;
+    --font-color-3: #FFFFFF;
+
+    --background-color-1: #222831;
+    --background-color-2: #393E46;
+    --background-color-3: #535f71;
+    --background-color-4: #FFFFFF;
+    
+    --special-color-1: #FF2E63;
+    --special-color-2: #00ADB5;
+
+    --border-color-1: #EEEEEE;
+    --border-color-2: #767e8a;
+    --border-color-3: #393E46;
+    --border-color-4: #FF2E63;
+
+    --font-error-color: #f30606;
+    --font-error-background-color: #f3d6d6;
+
+    --trasparent: #00000000;
+
+    --border-color-1: #EEEEEE;
+    --border-color-2: #9cacc3;
+    --border-color-3: #767e8a;
+    --border-color-4: #393E46;
+    --border-color-5: #FF2E63;
 }
 
 *{
@@ -32,7 +52,7 @@ body{
 /* Side bar content */
 body > aside{
     grid-area: aside;
-    background-color: var(--color-2);
+    background-color: var(--background-color-2);
     display: flex;
     flex-direction: column;
 }
@@ -48,7 +68,7 @@ aside > .option_list_container > a{
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    color: var(--color-5);
+    color: var(--font-color-3);
     font-size: 1.2em;
     border-left: 3px solid transparent;
     margin-left: 5px;
@@ -56,17 +76,17 @@ aside > .option_list_container > a{
 }
 aside > .option_list_container > a[data-select="1"]{
     /* border-radius: 21px 0 0 21px; */
-    border-left: 3px solid var(--color-6) !important;
-    background-color: var(--color-6);
-    color: var(--color-1);
+    border-left: 3px solid var(--background-color-3) !important;
+    background-color: var(--background-color-3);
+    color: var(--font-color-3);
 }
 aside > .option_list_container > a:hover{
-    border-left: 3px solid var(--color-5);
+    border-left: 3px solid var(--special-color-2);
 }
 /* Header content */
 body > header{
     grid-area: header;
-    background-color: var(--color-1);
+    background-color: var(--background-color-1);
     display: grid;
     grid-template-columns: 180px 1fr;
 }
@@ -76,7 +96,7 @@ header > .section_title_container{
     text-align: center;
 }
 header > .section_title_container > h1{
-    color: var(--color-4);
+    color: var(--font-color-3);
     font-size: 1.2em;
     font-weight: 400;
     letter-spacing: 3px;
@@ -95,7 +115,7 @@ header > .section_title_container > h1{
     position: relative;
 }
 .user_container > .user_name_container{
-    color: var(--color-6);
+    color: var(--font-color-3);
     font-size: 1.2em;
     font-weight: 600;
 }
@@ -121,9 +141,8 @@ header > .section_title_container > h1{
     position: absolute;
     top: 100%;
     right: 30px;
-    background-color: var(--color-1);
+    background-color: var(--background-color-1);
     border-radius: 0 0 5px 5px;
-    box-shadow: 0 5px 10px 0 rgba(0 0 0 / 0.3);
     z-index: 1;
     overflow-y: hidden;
     height: 0;
@@ -134,7 +153,7 @@ header > .section_title_container > h1{
 }
 .user_container > .dropdown_menu > a{
     text-decoration: none;
-    color: var(--color-6);
+    color: var(--font-color-3);
     font-size: 1.2em;
     font-weight: 400;
     padding: 15px 0;
@@ -142,10 +161,10 @@ header > .section_title_container > h1{
 }
 .user_container > .dropdown_menu > a:hover{
     cursor: pointer;
-    color: var(--color-5);
+    color: var(--special-color-2);
 }
 .user_container > .dropdown_menu > a:not(:last-child){
-    border-bottom: 1px solid var(--color-2);
+    border-bottom: 1px solid var(--font-color-2);
 }
 .user_container > .dropdown_menu > a > i{
     margin-right: 10px;
@@ -154,7 +173,7 @@ header > .section_title_container > h1{
 /* Main content */
 body > main{
     grid-area: main;
-    background-color: var(--color-6);
+    background-color: var(--background-color-3);
 }
 @media (max-width: 768px){
     body{
@@ -182,12 +201,12 @@ body > main{
     body > aside > .option_list_container > a{
         border: none !important;
         background-color: transparent !important;
-        color: var(--color-5);
+        color: var(--font-color-3);
     }
     aside > .option_list_container > a[data-select="1"]{
         border-left: none !important;
-        background-color: var(--color-4);
-        color: var(--color-6);
+        background-color: var(--trasparent);
+        color: var(--special-color-2);
     }
     body > aside > .option_list_container > a > span{
         display: none;
