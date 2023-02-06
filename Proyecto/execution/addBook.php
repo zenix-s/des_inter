@@ -10,9 +10,9 @@ if(isset($_POST['addBook'])){
     $precio = $_POST['precio'];
 
     if($book->addBook($isbn, $titulo, $autor, $editorial, $precio)){
-        header("Location: ../views/tablas.php");
+        header("Location: ../views/booksTable.php");
     }else{
-        header("Location: ../views/tablas.php");
+        header("Location: ../views/booksTable.php");
         echo "<script>alert('isbn ya existe');</script>";
     }
 }

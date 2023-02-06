@@ -4,9 +4,9 @@ $userSession = new UserSession();
 if (!isset($_SESSION['user'])) {
     header('location: login.php');
 }
-if(!isset($_GET['page'])){
-    header('location: tablas.php?page=1');
-}else{
+if (!isset($_GET['page'])) {
+    header('location: booksTable.php?page=1');
+} else {
     $page = $_GET['page'];
 }
 include_once "../includes/conexion.php";
@@ -15,7 +15,7 @@ $maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros");
 $maxRows->execute();
 $maxRows = $maxRows->fetch(PDO::FETCH_NUM);
 $maxRows = $maxRows[0];
-$limitInit = ($page-1)*10;
+$limitInit = ($page - 1) * 10;
 $consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,10");
 $consulta->execute();
 ?>
@@ -28,8 +28,8 @@ $consulta->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Archivo</title>
     <link rel="stylesheet" href="../styles/general_style.css">
-    <link rel="stylesheet" href="../styles/tablas_style.css">
-    <link rel="stylesheet" href="../styles/header_actions_1_style.css">
+    <link rel="stylesheet" href="../styles/books_table_style.css">
+    <link rel="stylesheet" href="../styles/books_actions.css">
     <link rel="icon" href="../img/icon.svg">
     <link rel="stylesheet" href="../icons/bootstrap-icons.css">
 </head>
@@ -38,34 +38,6 @@ $consulta->execute();
     <header id="header">
         <div class="section_title_container">
             <h1>El archivo</h1>
-        </div>
-        <div class="form_actions_container" id="up_button_anchor">
-
-            <button id="new_book">
-                <i class="bi bi-plus"></i>
-                <span>Añadir libro</span>
-            </button>
-            <div class="pages_container">
-                <?php
-                    if($page == 1 && $page == ceil($maxRows/10)){
-                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-left'></i></a>";
-                        echo "<span>$page</span>";
-                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-right'></i></a>";
-                    }elseif($page == 1){
-                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-left'></i></a>";
-                        echo "<span>$page</span>";
-                        echo "<a href='tablas.php?page=".($page+1)."'><i class='bi bi-chevron-right'></i></a>";
-                    }elseif($page < ceil($maxRows/10)){
-                        echo "<a href='tablas.php?page=".($page-1)."'><i class='bi bi-chevron-left'></i></a>";
-                        echo "<span>$page</span>";
-                        echo "<a href='tablas.php?page=".($page+1)."'><i class='bi bi-chevron-right'></i></a>";
-                    }else{
-                        echo "<a href='tablas.php?page=".($page-1)."'><i class='bi bi-chevron-left'></i></a>";
-                        echo "<span>$page</span>";
-                        echo "<a href='tablas.php?page=".($page)."'><i class='bi bi-chevron-right'></i></a>";
-                    }
-                ?>
-            </div>
         </div>
         <div class="user_container">
             <div class="user_name_container">
@@ -86,8 +58,7 @@ $consulta->execute();
     <aside>
         <div class="option_list_container">
             <a href="../index.php" data-select="0"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
-            <a href="tablas.php" data-select="1"><i class="bi bi-book"></i> <span>Libros</span></a>
-            <a href="portadas.php" data-select="0"><i class="bi bi-journal-bookmark"></i><span>Portadas</span></a>
+            <a href="booksTable.php" data-select="1"><i class="bi bi-book"></i> <span>Libros</span></a>
         </div>
     </aside>
     <section class="form_new_book_container">
@@ -126,8 +97,40 @@ $consulta->execute();
         </form>
     </section>
     <main>
+        <div class="form_actions_container" id="up_button_anchor">
+
+            <button id="new_book">
+                <i class="bi bi-plus"></i>
+                <span>Añadir libro</span>
+            </button>
+            <div class="pages_container">
+                <?php
+                if ($page == 1 && $page == ceil($maxRows / 10)) {
+                    echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-right'></i></a>";
+                } elseif ($page == 1) {
+                    echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='booksTable.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
+                } elseif ($page < ceil($maxRows / 10)) {
+                    echo "<a href='booksTable.php?page=" . ($page - 1) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='booksTable.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
+                } else {
+                    echo "<a href='booksTable.php?page=" . ($page - 1) . "'><i class='bi bi-chevron-left'></i></a>";
+                    echo "<span>$page</span>";
+                    echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-right'></i></a>";
+                }
+                ?>
+            </div>
+            <div class="views_container">
+                <a href="booksTable.php" class="active"><i class="bi bi-table"></i></a>
+                <a href="booksCover.php"><i class="bi bi-journal-bookmark"></i></a>
+            </div>
+        </div>
         <section class="table_view_container" id="table_container">
-            <table>
+            <table id="table">
                 <thead>
                     <tr>
                         <th>ISBN</th>
@@ -152,7 +155,7 @@ $consulta->execute();
                 </tbody>
             </table>
         </section>
-        <a href="#table_container" class="up_button"><i class="bi bi-arrow-up-circle-fill"></i></a>
+        <a href="#table" class="up_button"><i class="bi bi-arrow-up-circle-fill"></i></a>
     </main>
     <script>
         const newBookButton = document.getElementById("new_book");

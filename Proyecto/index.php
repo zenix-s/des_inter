@@ -26,9 +26,6 @@ $user = new User();
         <div class="section_title_container">
             <h1>El Archivo</h1>
         </div>
-        <div class="form_actions_container" id="up_button_anchor">
-
-        </div>
         <div class="user_container">
             <div class="user_name_container">
                 <span>
@@ -45,15 +42,14 @@ $user = new User();
                 window.location.href = 'includes/logout.php';
             ">
                 <!-- <img src="img/user.svg" alt=""> -->
-                <i class="bi bi-person"></i>
+                <i class="bi bi-chevron-down"></i>
             </div>
         </div>
     </header>
     <aside>
         <div class="option_list_container">
             <a href="index.php" data-select="1"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
-            <a href="views/tablas.php" data-select="0"><i class="bi bi-book"></i> <span>Libros</span></a>
-            <a href="views/portadas.php" data-select="0"><i class="bi bi-journal-bookmark"></i><span>Portadas</span></a>
+            <a href="views/booksTable.php" data-select="0"><i class="bi bi-book"></i> <span>Libros</span></a>
         </div>
     </aside>
     <main>
