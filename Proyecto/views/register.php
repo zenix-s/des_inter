@@ -54,6 +54,6 @@ if (isset($_POST['registrar'])) {
             </form>
         </div>
     </main>
-    <script src="../scripts/login_validation.js"></script>
+    <script src="../js/login_validation.js"></script>
 </body>
 </html>

@@ -3,6 +3,13 @@ include '../check_session.php';
 include '../includes/user.php';
 include '../includes/user_session.php';
 
+$userSession = new UserSession();
+
+if (isset($_SESSION['user'])) {
+    header('Location: ../index.php');
+}
+
+
 if (isset($_POST['login'])) {
     try{
         check_session('../index.php', $_POST['username'], $_POST['pass']);
@@ -47,7 +54,7 @@ if (isset($_POST['login'])) {
             </form>
         </div>
     </main>
-    <script src="../scripts/login_validation.js"></script>
+    <script src="../js/login_validation.js"></script>
 </body>
 
 </html>

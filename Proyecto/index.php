@@ -17,6 +17,7 @@ $user = new User();
     <title>El Archivo</title>
     <link rel="stylesheet" href="styles/dashboard_style.css">
     <link rel="stylesheet" href="styles/general_style.css">
+    <link rel="stylesheet" href="styles/dropdown_user_menu.css">
     <link rel="stylesheet" href="icons/bootstrap-icons.css">
     <link rel="icon" href="img/icon.svg">
 </head>
@@ -27,23 +28,27 @@ $user = new User();
             <h1>El Archivo</h1>
         </div>
         <div class="user_container">
-            <div class="user_name_container">
-                <span>
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                        echo $userSession->getCurrentUser();
-                    } else {
-                        echo "<span onclick='window.location.href = \"views/login.php\";' style='cursor:pointer;'>Iniciar sesión</span>";
-                    }
-                    ?>
-                </span>
+            <div class="user_name_container" id="dropdown_button">
+                <?php
+                if (isset($_SESSION['user'])) {
+                    echo "<span>" . $userSession->getCurrentUser() . "<i class='bi bi-chevron-down'></i></span>";
+                } else {
+                    echo "<span onclick='window.location.href = \"views/login.php\";' style='cursor:pointer;'>Iniciar sesión <i class='bi bi-box-arrow-in-right'></i></span>";
+                }
+                ?>
             </div>
-            <div class="user_img_container" onclick="
-                window.location.href = 'includes/logout.php';
-            ">
-                <!-- <img src="img/user.svg" alt=""> -->
-                <i class="bi bi-chevron-down"></i>
-            </div>
+            <?php
+            if (isset($_SESSION['user'])) {
+                echo '
+                <div class="dropdown_menu" id="dropdown_menu">
+                    <a href="#"><i class="bi bi-person-fill"></i> Perfil</a>
+                    <a href="#"><i class="bi bi-palette"></i>Themes</a>
+                    <a href="includes/logout.php"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
+                </div>
+                ';
+            }
+            ?>
+            
         </div>
     </header>
     <aside>
@@ -55,6 +60,7 @@ $user = new User();
     <main>
 
     </main>
+    <script src="js/dropdown_script.js"></script>
 </body>
 
 </html>

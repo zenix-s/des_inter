@@ -140,8 +140,6 @@ main{
     color: var(--color-6);
 }
 
-
-
 .table_view_container{
     scroll-behavior: smooth;
     overflow-y: scroll;

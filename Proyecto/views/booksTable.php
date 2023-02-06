@@ -40,19 +40,27 @@ $consulta->execute();
             <h1>El archivo</h1>
         </div>
         <div class="user_container">
-            <div class="user_name_container">
-                <span>
-                    <?php
-                    echo $userSession->getCurrentUser();
-                    ?>
-                </span>
+            <div class="user_name_container" id="dropdown_button">
+                <?php
+                if (isset($_SESSION['user'])) {
+                    echo "<span>" . $userSession->getCurrentUser() . "<i class='bi bi-chevron-down'></i></span>";
+                } else {
+                    echo "<span onclick='window.location.href = \"views/login.php\";' style='cursor:pointer;'>Iniciar sesión <i class='bi bi-box-arrow-in-right'></i></span>";
+                }
+                ?>
             </div>
-            <div class="user_img_container" onclick="
-                window.location.href = '../includes/logout.php';
-            ">
-                <!-- <img src="img/user.svg" alt=""> -->
-                <i class="bi bi-person"></i>
-            </div>
+            <?php
+            if (isset($_SESSION['user'])) {
+                echo '
+                <div class="dropdown_menu" id="dropdown_menu">
+                    <a href="#"><i class="bi bi-person-fill"></i> Perfil</a>
+                    <a href="#"><i class="bi bi-palette"></i>Themes</a>
+                    <a href="../includes/logout.php"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
+                </div>
+                ';
+            }
+            ?>
+            
         </div>
     </header>
     <aside>
@@ -170,6 +178,7 @@ $consulta->execute();
             formContainer.classList.remove("active");
         });
     </script>
+    <script src="../js/dropdown_script.js"></script>
 </body>
 
 </html>
