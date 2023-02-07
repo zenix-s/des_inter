@@ -9,7 +9,7 @@
             $this -> host = "localhost";
             $this -> bbdd = "libreria";
             $this -> user = "root";
-            $this -> pass = "";
+            $this -> pass = "rootpass123";
         }
         function conectar(){
             try{
