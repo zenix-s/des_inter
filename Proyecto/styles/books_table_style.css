@@ -7,8 +7,8 @@ body{
 main{
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
-
 
 .table_view_container{
     scroll-behavior: smooth;
@@ -23,12 +23,11 @@ main{
 .table_view_container > table{
     border-collapse: collapse;
     width: 93%;
-    overflow: hidden;
     height: max-content;
 }
 
 .table_view_container > table > thead > tr{
-    background-color: var(--background-color-1);
+    background-color: rgb(var(--background-color-1),0.5);
     height: 3.2em;
 }
 
@@ -43,7 +42,7 @@ main{
 
 .table_view_container > table > tbody > tr{
     border-bottom: 0.5px solid var(--border-color-3);
-    background-color: var(--background-color-3);
+    background-color: rgb(var(--background-color-3),0);
     color: var(--font-color-3);
 }
 
@@ -51,7 +50,7 @@ main{
     border-bottom: none !important;
 }
 .table_view_container > table > tbody > tr:hover > td{
-    background-color: var(--background-color-2);
+    background-color: rgb(var(--background-color-1),0.2);
     cursor: pointer;
 }
 .table_view_container > table > tbody > tr > td{
@@ -92,7 +91,7 @@ main{
     }
     .table_view_container > table > tbody > tr{
         margin-bottom: 15px !important;
-        background-color: var(--background-color-3) !important;
+        background-color: rgb(var(--background-color-3)) !important;
         border-radius: 10px;
         border: none;
         overflow: hidden;

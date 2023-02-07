@@ -5,7 +5,7 @@
     height: 60px;
     width: 100%;
     padding: 15px 25px;
-    background: var(--background-color-3);
+    background: rgb(var(--background-color-3));
     
 }
 .form_actions_container > button{
@@ -13,13 +13,13 @@
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    background: var(--background-color-4);
+    background: rgb(var(--background-color-4));
     transition: box-shadow 200ms ease-in-out;
     border-radius: 5px;
     border: none;
 }
 .form_actions_container > button:hover{
-    box-shadow: 2.5px 2.5px 0px var(--background-color-2);
+    box-shadow: 2.5px 2.5px 0px var(--border-color-2);
 }
 
 .form_actions_container > .pages_container{
@@ -65,6 +65,9 @@
     font-size: 1.2em;
     font-weight: 400;
     transition: text-shadow 200ms ease-in-out;
+}
+.views_container > .active{
+    color: var(--special);
 }
 .views_container > a:hover{
     text-shadow: 2.5px 2.5px 0px var(--font-color-1);

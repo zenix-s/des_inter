@@ -15,8 +15,8 @@ $maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros");
 $maxRows->execute();
 $maxRows = $maxRows->fetch(PDO::FETCH_NUM);
 $maxRows = $maxRows[0];
-$limitInit = ($page - 1) * 10;
-$consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,10");
+$limitInit = ($page - 1) * 15;
+$consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,15");
 $consulta->execute();
 ?>
 <!DOCTYPE html>
@@ -77,7 +77,9 @@ $consulta->execute();
             </button>
             <h1>Añadir Libro</h1>
             <div class="cover_book_input">
-                <img src="../img/book_placeholder.jpg" alt="book_placeholder">
+                <img src="../img/book_placeholder.jpg" alt="book_placeholder" id="bookCoverImg">
+                <!-- input only jpg and png id=bookCoverInput style display none -->
+                <input type="file" name="cover" id="bookCoverInput" accept="image/png, image/jpeg" style="display: none;">
             </div>
             <div class="input_container" id="isbn_container">
                 <input type="text" name="isbn" placeholder=" " id="isbn" required pattern="((?:[\dX]{13})|(?:[\d\-X]{17})|(?:[\dX]{10})|(?:[\d\-X]{13}))">
@@ -117,7 +119,7 @@ $consulta->execute();
             </button>
             <div class="pages_container">
                 <?php
-                if ($page == 1 && $page == ceil($maxRows / 10)) {
+                if ($page == 1 && $page == ceil($maxRows / 15)) {
                     echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
                     echo "<span>$page</span>";
                     echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-right'></i></a>";
@@ -125,7 +127,7 @@ $consulta->execute();
                     echo "<a href='booksTable.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
                     echo "<span>$page</span>";
                     echo "<a href='booksTable.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
-                } elseif ($page < ceil($maxRows / 10)) {
+                } elseif ($page < ceil($maxRows / 15)) {
                     echo "<a href='booksTable.php?page=" . ($page - 1) . "'><i class='bi bi-chevron-left'></i></a>";
                     echo "<span>$page</span>";
                     echo "<a href='booksTable.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
@@ -183,6 +185,7 @@ $consulta->execute();
         });
     </script>
     <script src="../js/dropdown_script.js"></script>
+    <script src="../js/newBook.js"></script>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 main{
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .books_cover_container{
     display: grid;
@@ -38,7 +39,7 @@ main{
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
-    color: var(--color-1);
+    color: var(--font-color-3);
 }
 
 @media (max-width: 768px){

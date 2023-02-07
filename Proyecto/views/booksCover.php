@@ -101,8 +101,8 @@ $query->execute();
                 ?>
             </div>
             <div class="views_container">
-                <a href="booksTable.php" class="active"><i class="bi bi-table"></i></a>
-                <a href="booksCover.php"><i class="bi bi-journal-bookmark"></i></a>
+                <a href="booksTable.php"><i class="bi bi-table"></i></a>
+                <a href="booksCover.php" class="active"><i class="bi bi-journal-bookmark"></i></a>
             </div>
         </div>
         <div class="books_cover_container">
