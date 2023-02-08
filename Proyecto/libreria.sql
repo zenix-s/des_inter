@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-02-2023 a las 13:18:10
+-- Tiempo de generación: 08-02-2023 a las 23:38:51
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -39,7 +39,7 @@ CREATE TABLE `clientes` (
 --
 
 CREATE TABLE `libros` (
-  `codigo` int(2) NOT NULL,
+  `codigo` int(11) NOT NULL,
   `isbn` varchar(17) DEFAULT NULL,
   `titulo` varchar(108) DEFAULT NULL,
   `autor` varchar(49) DEFAULT NULL,
@@ -70,7 +70,9 @@ INSERT INTO `libros` (`codigo`, `isbn`, `titulo`, `autor`, `editorial`, `precio`
 (15, '978-84-99893-67-9', 'El camino de las sombras', 'Brent Weeks', 'DEBOLSILLO', 995, '978-84-99893-67-9.jpg'),
 (16, '978-84-66657-54-9', 'Palabras Radiantes', 'Brandon Sanderson', 'NOVA', 1420, '978-84-66657-54-9.jpg'),
 (17, '978-84-17347-00-0', 'Juramentada', 'Brandon Sanderson', 'NOVA', 3315, '978-84-17347-00-0.jpg'),
-(18, '978-84-17347-93-2', 'El Ritmo de la Guerra', 'Brandon Sanderson', 'NOVA', 3315, '978-84-17347-93-2.jpg');
+(18, '978-84-17347-93-2', 'El Ritmo de la Guerra', 'Brandon Sanderson', 'NOVA', 3315, '978-84-17347-93-2.jpg'),
+(19, '9780756405892', 'El nombre del viento', 'Patrick Rothfuss', 'DEBOLSILLO', 2205, '9780756405892.jpg'),
+(20, '9780756405893', 'El nombre del viento', 'Patrick Rothfuss', 'DEBOLSILLO', 2505, '9780756405893.jpg');
 
 -- --------------------------------------------------------
 
@@ -176,6 +178,12 @@ ALTER TABLE `clientes`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `libros`
+--
+ALTER TABLE `libros`
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -192,12 +200,6 @@ ALTER TABLE `vendedores`
 --
 ALTER TABLE `ventas`
   MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `libros`
---
-ALTER TABLE `libros`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas
