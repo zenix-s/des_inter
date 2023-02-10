@@ -207,7 +207,7 @@ if (isset($search)) {
             </div>
             <div class="pages_container">
                 <?php
-                if ($page == 1 && $page == ceil($maxRows / 10)) {
+                if ($page == 1 && $page == ceil($maxRows / 9)) {
                     echo "<a href='booksCover.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
                     echo "<span>$page</span>";
                     echo "<a href='booksCover.php?page=" . ($page) . "'><i class='bi bi-chevron-right'></i></a>";
@@ -215,7 +215,7 @@ if (isset($search)) {
                     echo "<a href='booksCover.php?page=" . ($page) . "'><i class='bi bi-chevron-left'></i></a>";
                     echo "<span>$page</span>";
                     echo "<a href='booksCover.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
-                } elseif ($page < ceil($maxRows / 10)) {
+                } elseif ($page < ceil($maxRows / 9)) {
                     echo "<a href='booksCover.php?page=" . ($page - 1) . "'><i class='bi bi-chevron-left'></i></a>";
                     echo "<span>$page</span>";
                     echo "<a href='booksCover.php?page=" . ($page + 1) . "'><i class='bi bi-chevron-right'></i></a>";
