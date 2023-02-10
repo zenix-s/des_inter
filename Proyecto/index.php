@@ -20,6 +20,11 @@ $user = new User();
     <link rel="stylesheet" href="styles/dropdown_user_menu.css">
     <link rel="stylesheet" href="icons/bootstrap-icons.css">
     <link rel="icon" href="img/icon.svg">
+    <?php
+    if (isset($_SESSION['user'])) {
+        include_once 'includes/chart_script.php';
+    }
+    ?>
 </head>
 
 <body>
@@ -48,17 +53,24 @@ $user = new User();
                 ';
             }
             ?>
-            
+
         </div>
     </header>
     <aside>
         <div class="option_list_container">
             <a href="index.php" data-select="1"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
             <a href="views/booksTable.php" data-select="0"><i class="bi bi-book"></i> <span>Libros</span></a>
+            <a href="views/vendedores.php" data-select="0"><i class="bi bi-person"></i> <span>Vendedores</span></a>
+            <a href="views/ventasTable.php" data-select="0"><i class="bi bi-cash"></i> <span>Ventas</span></a>
+            <a href="views/pdf.php" data-select="0"><i class="bi bi-file-pdf"></i><span>PDF</span></a>
+
         </div>
     </aside>
     <main>
-
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <div id="container" class="chart_container" style="height: 400px;"></div>
     </main>
     <script src="js/dropdown_script.js"></script>
 </body>

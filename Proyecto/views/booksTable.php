@@ -4,37 +4,66 @@ $userSession = new UserSession();
 if (!isset($_SESSION['user'])) {
     header('location: login.php');
 }
+
+if (isset($_GET['search']) && $_GET['search'] != "") {
+    $search = $_GET['search'];
+}
+
+
 if (!isset($_GET['page'])) {
-    header('location: booksTable.php?page=1');
+    if (isset($_GET['search']) && $_GET['search'] != "") {
+        header("location: booksTable.php?page=1&search=$search");
+    } else {
+        header('location: booksTable.php?page=1');
+    }
 } else {
     $page = $_GET['page'];
     if ($page < 1) {
-        header('location: booksTable.php?page=1');
+        if (isset($_GET['search']) && $_GET['search'] != "") {
+            header("location: booksTable.php?page=1&search=$search");
+        } else {
+            header('location: booksTable.php?page=1');
+        }
     }
 }
 
 
 include_once "../includes/conexion.php";
 $conexion = new Conexion();
-$maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros");
-$maxRows->execute();
-$maxRows = $maxRows->fetch(PDO::FETCH_NUM);
-$maxRows = $maxRows[0];
 $limitInit = ($page - 1) * 15;
-$consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,15");
-$consulta->execute();
+if (isset($_GET['search']) && $_GET['search'] != "") {
+    $search = $_GET['search'];
+    $maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros WHERE titulo LIKE '%$search%' OR autor LIKE '%$search%' OR editorial LIKE '%$search%'");
+    $maxRows->execute();
+    $maxRows = $maxRows->fetch(PDO::FETCH_NUM);
+    $maxRows = $maxRows[0];
+    $limitInit = ($page - 1) * 15;
+    $consulta = $conexion->conectar()->prepare("SELECT * FROM libros WHERE titulo LIKE '%$search%' OR autor LIKE '%$search%' OR editorial LIKE '%$search%' LIMIT $limitInit,15");
+    $consulta->execute();
+    $search = "search=$search&";
+} else {
+    $search = "";
+    $maxRows = $conexion->conectar()->prepare("SELECT COUNT(*) FROM libros");
+    $maxRows->execute();
+    $maxRows = $maxRows->fetch(PDO::FETCH_NUM);
+    $maxRows = $maxRows[0];
+    $consulta = $conexion->conectar()->prepare("SELECT * FROM libros LIMIT $limitInit,15");
+    $consulta->execute();
+}
 
-if(isset($_GET['isbn'])){
+
+
+if (isset($_GET['isbn'])) {
     // send all isbn information to the form
     $isbn_get = $_GET['isbn'];
     include_once "../includes/books.php";
     $book = new books();
-    if(!$book->booksExist($isbn_get)){
+    if (!$book->booksExist($isbn_get)) {
         header("Location: booksTable.php?page=$page");
     }
     $libcon = $conexion->conectar()->prepare("SELECT * FROM libros WHERE isbn = ?");
     $libcon->execute([$isbn_get]);
-    while($lib = $libcon->fetch(PDO::FETCH_ASSOC)){
+    while ($lib = $libcon->fetch(PDO::FETCH_ASSOC)) {
         $isbn = $lib['isbn'];
         $titulo = $lib['titulo'];
         $autor = $lib['autor'];
@@ -87,109 +116,121 @@ if(isset($_GET['isbn'])){
                 ';
             }
             ?>
-            
+
         </div>
     </header>
     <aside>
         <div class="option_list_container">
             <a href="../index.php" data-select="0"><i class="bi bi-grid-1x2-fill"></i> <span>Dashboard</span></a>
             <a href="booksTable.php" data-select="1"><i class="bi bi-book"></i> <span>Libros</span></a>
+            <a href="vendedores.php" data-select="0"><i class="bi bi-person"></i> <span>Vendedores</span></a>
+            <a href="ventasTable.php" data-select="0"><i class="bi bi-cash"></i> <span>Ventas</span></a>
+            <a href="pdf.php" data-select="0"><i class="bi bi-file-pdf"></i><span>PDF</span></a>
+
+
         </div>
     </aside>
-    <section class="form_new_book_container <?php 
-        if(isset($_GET['isbn'])){
-            echo "active";
-        } 
-    ?>">
+    <section class="form_new_book_container <?php
+                                            if (isset($_GET['isbn'])) {
+                                                echo "active";
+                                            }
+                                            ?>">
         <form action="../execution/addBook.php" method="post" enctype="multipart/form-data">
-            <a class="close_button" id="close_form" href="booksTable.php?page=<?php echo $page?>">
+            <a class="close_button" id="close_form" href="booksTable.php?page=<?php echo $page ?>">
                 <i class="bi bi-x"></i>
             </a>
             <h1 id="header_new_book"><?php
-                if(isset($_GET['isbn'])){
-                    echo "Modificar libro";
-                }else{
-                    echo "Añadir Libro";
-                }
-            ?></h1>
+                                        if (isset($_GET['isbn'])) {
+                                            echo "Modificar libro";
+                                        } else {
+                                            echo "Añadir Libro";
+                                        }
+                                        ?></h1>
             <div class="cover_book_input">
                 <img src="<?php
-                    if(isset($_GET['isbn']) && $cover != ""){
-                        echo "../img/portadas/$cover";
-                    }else{
-                        echo "../img/book_placeholder.jpg";
-                    }
-                ?>" alt="book_placeholder" id="bookCoverImg">
+                            if (isset($_GET['isbn']) && $cover != "") {
+                                echo "../img/portadas/$cover";
+                            } else {
+                                echo "../img/book_placeholder.jpg";
+                            }
+                            ?>" alt="book_placeholder" id="bookCoverImg">
                 <input type="file" name="img_cover" id="bookCoverInput" accept="image/png, image/jpeg" style="display: none;">
             </div>
             <div class="input_container" id="isbn_container">
                 <input type="text" name="isbn" placeholder=" " id="isbn" required pattern="((?:[\dX]{13})|(?:[\d\-X]{17})|(?:[\dX]{10})|(?:[\d\-X]{13}))" value="<?php
-                    if(isset($_GET['isbn'])){
-                        echo $isbn;
-                    }
-                ?>">
+                                                                                                                                                                    if (isset($_GET['isbn'])) {
+                                                                                                                                                                        echo $isbn;
+                                                                                                                                                                    }
+                                                                                                                                                                    ?>">
                 <label for="isbn">ISBN*</label>
             </div>
             <div class="input_container" id="autor_container">
 
                 <input type="text" name="autor" placeholder=" " id="autor" value="<?php
-                    if(isset($_GET['isbn'])){
-                        echo $autor;
-                    }
-                ?>">
+                                                                                    if (isset($_GET['isbn'])) {
+                                                                                        echo $autor;
+                                                                                    }
+                                                                                    ?>">
                 <label for="autor">Autor</label>
             </div>
             <div class="input_container" id="titulo_container">
 
                 <input type="text" name="titulo" placeholder=" " id="titulo" value="<?php
-                    if(isset($_GET['isbn'])){
-                        echo $titulo;
-                    }
-                ?>">
+                                                                                    if (isset($_GET['isbn'])) {
+                                                                                        echo $titulo;
+                                                                                    }
+                                                                                    ?>">
                 <label for="titulo">Titulo*</label>
             </div>
             <div class="input_container" id="editorial_container">
 
                 <input type="text" name="editorial" placeholder=" " id="editorial" value="<?php
-                    if(isset($_GET['isbn'])){
-                        echo $editorial;
-                    }
-                ?>">
+                                                                                            if (isset($_GET['isbn'])) {
+                                                                                                echo $editorial;
+                                                                                            }
+                                                                                            ?>">
                 <label for="editorial">Editorial</label>
             </div>
             <div class="input_container" id="precio_container">
 
                 <input type="text" name="precio" placeholder=" " id="precio" value="<?php
-                    if(isset($_GET['isbn'])){
-                        echo $precio;
-                    }
-                ?>">
+                                                                                    if (isset($_GET['isbn'])) {
+                                                                                        echo $precio;
+                                                                                    }
+                                                                                    ?>">
                 <label for="precio">Precio Venta</label>
             </div>
             <div class="input_container" id="submit_container">
                 <input type="submit" value="<?php
-                    if(isset($_GET['isbn'])){
-                        echo "Modificar";
-                    }else{
-                        echo "Añadir";
-                    }
-                ?>" name="<?php
-                    if(isset($_GET['isbn'])){
-                        echo "updateBook";
-                    }else{
-                        echo "addBook";
-                    }
-                ?>" id="submit_new_book">
+                                            if (isset($_GET['isbn'])) {
+                                                echo "Modificar";
+                                            } else {
+                                                echo "Añadir";
+                                            }
+                                            ?>" name="<?php
+                            if (isset($_GET['isbn'])) {
+                                echo "updateBook";
+                            } else {
+                                echo "addBook";
+                            }
+                            ?>" id="submit_new_book">
             </div>
         </form>
     </section>
     <main>
         <div class="form_actions_container" id="up_button_anchor">
-
-            <button id="new_book">
-                <i class="bi bi-plus"></i>
-                <span>Añadir libro</span>
-            </button>
+            <div class="searchBook">
+                <form action="booksTable.php" method="get">
+                    <input type="text" name="search" placeholder="Buscar" id="searchBook">
+                    <button type="submit" id="searchBookButton"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+            <div class="newBook">
+                <button id="new_book">
+                    <i class="bi bi-plus"></i>
+                    <span>Añadir libro</span>
+                </button>
+            </div>
             <div class="pages_container">
                 <?php
                 if ($page == 1 && $page == ceil($maxRows / 15)) {
@@ -224,6 +265,7 @@ if(isset($_GET['isbn'])){
                         <th>Titulo</th>
                         <th>Autor</th>
                         <th>Precio</th>
+                        <th>Eliminar</th>
                         <!-- <th>Editorial</th> -->
                     </tr>
                 </thead>
@@ -235,6 +277,7 @@ if(isset($_GET['isbn'])){
                         echo "<td data-label='titulo'>" . $fila['titulo'] . "</td>";
                         echo "<td data-label='autor'>" . $fila['autor'] . "</td>";
                         echo "<td data-label='precio'>" . ($fila['precio'] / 100) . '€' . "</td>";
+                        echo "<td data-label='eliminar'><a href='../execution/deleteLibro.php?isbn=" . $fila['isbn'] . "'><i class='bi bi-trash'></i></a></td>";
                         // echo "<td data-label='editorial'>" . $fila['editorial'] . "</td>";
                         echo "</tr>";
                     }

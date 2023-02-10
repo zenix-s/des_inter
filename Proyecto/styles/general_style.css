@@ -21,8 +21,9 @@
 
     --special-color-1: rgb(255, 20, 78);
     --special-color-2: rgb(9, 194, 231);
+    --special-color-3: rgb(134, 188, 37);
 
-    --special: var(--special-color-2);
+    --special: var(--special-color-3);
 }
 
 *{

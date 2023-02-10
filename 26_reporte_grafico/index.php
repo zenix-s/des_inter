@@ -18,9 +18,6 @@ $resultado = mysqli_query($conexion, $consulta);
     <title>Highcharts Example</title>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <style type="text/css">
-        /* ${demo.css} */
-    </style>
     <script type="text/javascript">
         $(function() {
             $('#container').highcharts({

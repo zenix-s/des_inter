@@ -58,6 +58,13 @@ main{
     padding: 10px 10px;
     transition: color 100ms, background-color 50ms;
 }
+.table_view_container > table > tbody > tr > td[data-label="eliminar"]{
+    text-align: center;
+}
+.table_view_container > table > tbody > tr > td > a{
+    color: var(--font-color-3);
+    text-decoration: none;
+}
 .up_button{
     position: fixed;
     font-size: 2em;

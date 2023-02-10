@@ -6,9 +6,6 @@ class UserSession{
     }
 
     public function setCurrentUser($username){
-        include_once 'user.php';
-        $user = new User();
-        $username = $user->getFullName($username);
         $_SESSION['user'] = $username;
     }
 

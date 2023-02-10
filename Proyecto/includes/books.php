@@ -37,7 +37,19 @@ class books extends Conexion{
             return false;
         }
     }
-
+    public function deleteBook($isbn){
+        if($this->booksExist($isbn)){
+            $query = $this->conectar()->prepare('DELETE FROM libros WHERE isbn = :isbn');
+            try{
+                $query->execute(['isbn' => $isbn]);
+                return true;
+            }catch(PDOException $e){
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }
 
 ?>
