@@ -1,0 +1,311 @@
+.actions_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+    height: max-content;
+    align-self: end;
+    padding: 10px 0;
+}
+.searchVendedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    padding: 10px 0;
+}
+.searchVendedor > input{
+    width: 75%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    color: var(--font-color-3);
+    background-color: rgb(var(--background-color-1),0.5);
+    transition: background-color 100ms;
+    outline: transparent;
+}
+.searchVendedor > input:focus{
+    background-color: rgb(var(--background-color-1),0.8);
+}
+
+.newVendedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    padding: 10px 0;
+}
+.newVendedor > button{
+    width: 45%;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    color: var(--font-color-3);
+    background-color: rgb(var(--background-color-1),0.5);
+    transition: background-color 100ms;
+    outline: transparent;
+}
+.newVendedor > button:hover{
+    background-color: rgb(var(--background-color-1),0.8);
+    cursor: pointer;
+}
+
+.table_container{
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    padding-top: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+#table{
+    border-collapse: collapse;
+    width: 93%;
+    height: max-content;
+}
+#table > thead > tr{
+    background-color: rgb(var(--background-color-1),0.5);
+    height: 3.2em;
+}
+#table > thead > tr > th{
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    font-weight: 400;
+    padding: 1em 1em;
+    color: var(--font-color-3);
+    text-align: left;
+}
+#table > tbody > tr{
+    border-bottom: 0.5px solid var(--border-color-3);
+    background-color: rgb(var(--background-color-3),0);
+    color: var(--font-color-3);
+}
+#table > tbody > tr:last-of-type{
+    border-bottom: none !important;
+}
+#table > tbody > tr:hover > td{
+    background-color: rgb(var(--background-color-1),0.2);
+    cursor: pointer;
+}
+#table > tbody > tr > td{
+    height: 3.2em;
+    padding: 10px 10px;
+    transition: color 100ms, background-color 50ms;
+}
+#table > tbody > tr > td > a{
+    color: var(--font-color-3);
+    text-decoration: none;
+    transition: color 100ms;
+    font-size: 1.5em;
+    margin: 0 15px;
+}
+.up_button{
+    position: fixed;
+    font-size: 2em;
+    right: 10px;
+    bottom: 10px;
+    color: var(--font-color-1);
+    opacity: 0.5;
+    transition: color 100ms;
+}
+.up_button:hover{
+    color: var(--font-color-2);
+}
+
+/* Form Nuevo Vendedor */
+.active{
+    display: flex  !important;
+}
+.form_container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(var(--background-color-1),0.5);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+.form_container > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 300px;
+    max-width: 800px;
+    height: 500px;
+    background-color: rgb(var(--background-color-1),0.4);
+    backdrop-filter: blur(10px) saturate(180%) contrast(80%) brightness(110%);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0px rgb(var(--background-color-1),0.5);
+    padding: 20px;
+    transition: background-color 100ms;
+    position: relative;
+}
+.form_container > form > h1{
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--font-color-3);
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+.form_container > form > .close_button{
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    top: 8px;
+    right: 8px;
+    font-size: 1.5em;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(var(--background-color-3));
+    color: var(--special);
+    cursor: pointer;
+    transition: background-color 100ms, color 100ms;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form_container > form .input_container{
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 10px;
+    position: relative;
+    align-items: center;
+}
+.form_container > form .input_container > input[type="text"]{
+    border: 0;
+    border-bottom: 1.5px solid var(--border-color-4);
+    background-color: transparent;
+    padding: 5px 8px;
+    font-size: 1.5em;
+    transition: border 200ms ease-in-out;
+    outline: none;
+    color: var(--font-color-3);
+    width: 100%;
+}
+.form_container > form .input_container > label{
+    color: var(--font-color-3);
+    font-size: 1em;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    transform: translateY(7px);
+    cursor: text;
+    transition: transform 0.3s, color 0.3s, background-color 0.3s, font-size 0.3s;
+    user-select: none;
+    padding: 3px 3px;
+}
+.form_container > form .input_container > input[type="text"]:focus + label,
+.form_container > form .input_container > input[type="text"]:not(:placeholder-shown) + label{
+    transform: translateY(-20px);
+    font-size: 0.8em;
+}
+
+.form_container > form > .input_container > input[type="text"]:not(:valid):not(:placeholder-shown) + label{
+    color: var(--error-color);
+}
+.form_container > form > .input_container > input[type="text"]:not(:valid):not(:placeholder-shown){
+    border-bottom: 1.5px solid var(--error-color);
+}
+
+.form_container > form .input_container > input[type="submit"]{
+    border: 0;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background: transparent;
+    transition: box-shadow 200ms ease-in-out;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(var(--background-color-4));
+    color: var(--font-color-1);
+    font-size: 1.2em;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: 60%;
+    margin-top: 20px;
+}
+.form_container > form .input_container > input[type="submit"]:hover{
+    box-shadow: 0 0 10px 0px rgb(var(--background-color-1),0.5);
+}
+/* Media querys */
+@media screen and (max-width: 900px){
+    #table > thead{
+        display: none;
+    }
+    #table{
+        display: block;
+        width: 95% !important;
+        background-color: transparent !important;
+        box-shadow: none;
+    }
+    #table > tbody,
+    #table > tbody > tr,
+    #table > tbody > tr > td{
+        display: block;
+        width: 100% !important;
+    }
+    #table > tbody > tr{
+        margin-bottom: 15px !important;
+        background-color: rgb(var(--background-color-3)) !important;
+        border-radius: 10px;
+        border: none;
+        overflow: hidden;
+        border: 2px solid var(--border-color-2);
+    }
+    #table > tbody > tr > td{
+        text-align: right !important;
+        min-height: 3em;
+        padding-left: 35%;
+        position: relative;
+        overflow: hidden;
+        line-height: 1.2;
+        color: var(--font-color-3);
+    }
+    #table > tbody > tr > td{
+        border-bottom: 1px solid var(--border-color-2) !important;
+    }
+    #table > tbody > tr > td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 35%;
+        padding-left: 15px;
+        font-size: 1em;
+        text-align: left;
+        text-transform: uppercase;
+    }
+    .actions_container{
+        grid-template-columns: 2fr 1fr;
+    }
+    .searchVendedor > input{
+        width: 95%;
+    }
+    .newVendedor > button{
+        width: 95%;
+    }
+    .newVendedor > button > span{
+        display: none;
+    }
+}

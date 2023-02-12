@@ -1,0 +1,13 @@
+.chart_container .highcharts-background{
+    background-color: transparent !important;
+}
+.chart_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chart_container > a{
+    text-decoration: none;
+    font-size: 5em;
+    color: var(--font-color-3);
+}

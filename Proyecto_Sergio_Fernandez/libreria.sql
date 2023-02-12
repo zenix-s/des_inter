@@ -1,0 +1,207 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-02-2023 a las 14:19:41
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.2.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `libreria`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `libros`
+--
+
+CREATE TABLE `libros` (
+  `codigo` int(2) NOT NULL,
+  `isbn` varchar(17) DEFAULT NULL,
+  `titulo` varchar(108) DEFAULT NULL,
+  `autor` varchar(49) DEFAULT NULL,
+  `editorial` varchar(78) DEFAULT NULL,
+  `precio` int(11) DEFAULT NULL,
+  `portada` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `libros`
+--
+
+INSERT INTO `libros` (`codigo`, `isbn`, `titulo`, `autor`, `editorial`, `precio`, `portada`) VALUES
+(1, '978-84-9964-726-5', 'Aplicaciones gráficas con Python 3', 'Cuevas Álvarez, Alberto', 'Ra-Ma S.A. Editorial y Publicaciones', 3500, ''),
+(2, '978-84-415-3941-9', 'Aprenda a programar con Python 3', 'Shaw, Zed A. Acera García, Miguel Ángel', 'Anaya Multimedia', 2017, ''),
+(3, '978-84-415-3651-7', 'Aprenda a programar con PYTHON', 'Shaw, Zed A.', 'Anaya Multimedia', 2014, ''),
+(5, '978-84-267-3489-1', 'Aprende a programar en Python : de cero al infinito', 'Guardati Buemo, Silvia Cairó Battistutti, Osvaldo', 'Marcombo', 2022, ''),
+(6, '978-84-09-25816-1', 'Aprende machine learning en español : teoría + práctica Python', 'Bagnato, Juan Ignacio', 'Bagnato, Juan Ignacio', 2020, ''),
+(7, '978-84-09-37529-5', 'Aprende Python con Lego Spike Prime : introducción al lenguaje Python de una forma divertida', 'López Simón, Yamal', 'López Simón, Yamal', 2022, ''),
+(8, '978-84-267-2429-8', 'Aprender inteligencia artificial, combinatoria, grafos y algoritmos en Python : con 100 ejercicios prácticos', 'Pérez Castaño, Arnaldo', 'Marcombo', 2017, ''),
+(9, '978-84-17449-81-0', 'Aprendiendo a programar en Python', 'García Entrambasaguas, Paula ... [et al.]', 'Servicio de Publicaciones y Divulgación Científica de la Universidad de Málaga', 2019, ''),
+(10, '978-84-17449-82-7', 'Aprendiendo a programar en Python', 'García Entrambasaguas, Paula ... [et al.]', 'Servicio de Publicaciones y Divulgación Científica de la Universidad de Málaga', 2019, '978-84-17449-82-7.jpg'),
+(11, '978-84-9881-405-7', 'Aprendizaje del lenguaje Python en FP', 'Arroyo Juan, Manuel', 'Procompal Publicaciones', 2010, ''),
+(12, '978-07-65326-35-5', 'El Camino De Los Reyes', 'Brandon Sanderson', 'DragonSteel', 2009, '978-07-65326-35-5.jpg'),
+(13, '978-84-18037-81-8', 'Trenza del Mar Esmeralda', 'Brandon Sanderson', 'nova', 2690, '978-84-18037-81-8.jpg'),
+(14, '978-84-99899-61-9', 'El Temor de un Hombre Sabio', 'Patrick Rothfuss', 'DEBOLSILLO', 1095, '978-84-99899-61-9.jpg'),
+(15, '978-84-99893-67-9', 'El camino de las sombras', 'Brent Weeks', 'DEBOLSILLO', 995, '978-84-99893-67-9.jpg'),
+(16, '978-84-66657-54-9', 'Palabras Radiantes', 'Brandon Sanderson', 'NOVA', 1420, '978-84-66657-54-9.jpg'),
+(17, '978-84-17347-00-0', 'Juramentada', 'Brandon Sanderson', 'NOVA', 3315, '978-84-17347-00-0.jpg'),
+(18, '978-84-17347-93-2', 'El Ritmo de la Guerra', 'Brandon Sanderson', 'NOVA', 3315, '978-84-17347-93-2.jpg'),
+(19, '1234567823', 'Las Aventuras de Gonzalo', 'Tuerto Romero', 'La Mia', 1345, '1234567823.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_user` int(11) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_user`, `username`, `password`) VALUES
+(1, 'Admin', 'Admin1'),
+(2, 'antonio', 'anton'),
+(3, 'Pepito_Mar', 'Pepito123Mar');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vendedores`
+--
+
+CREATE TABLE `vendedores` (
+  `id_vendedor` int(11) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
+  `dni` varchar(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `vendedores`
+--
+
+INSERT INTO `vendedores` (`id_vendedor`, `nombre`, `dni`) VALUES
+(1, 'Sergio Fernández Fernánde', '50276589Q'),
+(3, 'Jose Antonio Resines', '50365948L'),
+(5, 'Pedro Angulo', '50276589T');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id_venta` int(11) NOT NULL,
+  `isbn` varchar(17) NOT NULL,
+  `id_vendedor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id_venta`, `isbn`, `id_vendedor`) VALUES
+(8, '978-84-9964-726-5', 3),
+(10, '978-84-18037-81-8', 1),
+(11, '978-84-17347-00-0', 3),
+(12, '978-84-99893-67-9', 5),
+(13, '978-84-9881-405-7', 1),
+(14, '978-84-267-2429-8', 5),
+(15, '978-84-17347-93-2', 1),
+(16, '978-84-415-3651-7', 1);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `libros`
+--
+ALTER TABLE `libros`
+  ADD PRIMARY KEY (`codigo`),
+  ADD UNIQUE KEY `isbn` (`isbn`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indices de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  ADD PRIMARY KEY (`id_vendedor`),
+  ADD UNIQUE KEY `dni` (`dni`);
+
+--
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id_venta`),
+  ADD KEY `isbn` (`isbn`),
+  ADD KEY `id_vendedor` (`id_vendedor`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `libros`
+--
+ALTER TABLE `libros`
+  MODIFY `codigo` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  MODIFY `id_vendedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`isbn`) REFERENCES `libros` (`isbn`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `ventas_ibfk_3` FOREIGN KEY (`id_vendedor`) REFERENCES `vendedores` (`id_vendedor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
