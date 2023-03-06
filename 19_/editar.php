@@ -6,13 +6,13 @@ $codigo = $_GET['codigo'];
 include 'conexion.php';
 $sql = $conexion->query("SELECT * FROM empleados WHERE cod_empresa = $codigo");
 $resultado = $sql->fetch(PDO::FETCH_OBJ);
-echo "<script>
-        document.getElementById('nombre').value = '$resultado->nombre';
-        document.getElementById('apellidos').value = '$resultado->apellidos';
-        document.getElementById('edad').value = '$resultado->edad';
-        document.getElementById('ciudad').value = '$resultado->ciudad';
-        document.getElementById('profesion').value = '$resultado->profesion';
-    </script>"
+// echo "<script>
+//         document.getElementById('nombre').value = '$resultado->nombre';
+//         document.getElementById('apellidos').value = '$resultado->apellidos';
+//         document.getElementById('edad').value = '$resultado->edad';
+//         document.getElementById('ciudad').value = '$resultado->ciudad';
+//         document.getElementById('profesion').value = '$resultado->profesion';
+//     </script>"
 ?>
 <!DOCTYPE html>
 <html lang="en">

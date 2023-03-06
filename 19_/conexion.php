@@ -1,7 +1,7 @@
 <?php
 $dbhost = "localhost";
 $dbuser = "root";
-$dbpass = "";
+$dbpass = "rootpass123";
 $dbname = "prueba";
 try{
     $conexion = new PDO('mysql:host='.$dbhost.';dbname='.$dbname,$dbuser,$dbpass);
